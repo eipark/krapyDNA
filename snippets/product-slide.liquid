@@ -1,0 +1,16 @@
+<div id="product-{{ product.handle }}" class="product{% if forloop.last %} last{% endif %}">
+  <div class="image">
+    <a href="/collections/{{ product-slide }}{{ product.url }}">
+      <img src="{{ product.featured_image | product_img_url: 'large' }}" alt="{{ product.title | escape  }}" title="{{ product.title | escape  }}" />
+    </a>
+  </div>
+  <div class="details">
+    <a href="/collections/{{ product-slide }}{{ product.url }}" class="clearfix">
+      <span class="title">{{ product.title }}</span>
+      <div class="extras clearfix">
+        <span class="description">{{ product.price_min | money }}</span>
+        <span class="view">view details</span>
+      </div>
+    </a>
+  </div>
+</div>

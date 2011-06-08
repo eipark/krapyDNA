@@ -1,0 +1,43 @@
+<div id="index" class="clearfix">
+
+  <div class="slider-container">
+    {% if settings.homepage_banner == "slider" %}
+    <div id="content-scroll" class="scroll">
+      <div id="content-slide">
+        {% for product in collections[settings.slider_collection].products %}
+        {% include 'product-slide' with settings.slider_collection %}
+        {% endfor %}
+      </div><!-- /#latest-products -->
+    </div>
+    <div class="slider">
+      <span class="ui-slider-handle">&nbsp;</span>
+    </div>
+    {% else %}
+    <ul id="slider">
+      <li class="slide"><img src="{{ 'slideshow_1.jpg' | asset_url }}" data-url="{{ settings.image_1_link }}" class="slide-img" /></li>
+      <li class="slide"><img src="{{ 'slideshow_2.jpg' | asset_url }}" data-url="{{ settings.image_2_link }}" class="slide-img" /></li>
+      <li class="slide"><img src="{{ 'slideshow_3.jpg' | asset_url }}" data-url="{{ settings.image_3_link }}" class="slide-img" /></li>
+      <li class="slide"><img src="{{ 'slideshow_4.jpg' | asset_url }}" data-url="{{ settings.image_4_link }}" class="slide-img" /></li>
+      <li class="slide"><img src="{{ 'slideshow_5.jpg' | asset_url }}" data-url="{{ settings.image_5_link }}" class="slide-img" /></li>
+    </ul>
+    <div id="slider-empty" style="display:none; padding:120px 0; text-align:center;">
+      <h4>Slider is empty</h4>
+      If you are the shop owner, <a href="/admin/themes/current/settings">click here</a> to upload images to this slideshow.
+    </div>
+    {% endif %}
+  </div>
+
+  {% if settings.frontpage_collection != "" %}
+  <div class="more-info">
+    <span class="upper">Featured</span>
+    <span class="lower">{% if collections[settings.frontpage_collection].all_products_count < 8 %}{{ collections[settings.frontpage_collection].all_products_count }}{% else %}8{% endif %} {{ collections[settings.frontpage_collection].all_products_count | pluralize: 'Item', 'Items' }}</span>
+  </div>
+
+  <div id="content-table" class="clearfix">
+    {% for product in collections[settings.frontpage_collection].products limit:8 %}
+    {% include 'product-loop' with settings.frontpage_collection %}
+    {% endfor %}
+  </div>
+  {% endif %}
+
+</div> <!-- /#index -->

@@ -1,0 +1,26 @@
+<div id="blog" class="clearfix">
+  {% paginate blog.articles by settings.pagination_limit %}
+  <div class="articles clearfix">
+    <div class="main">
+      
+      <div class="more-info clearfix">
+        <span class="upper">{{ blog.title }}</span>
+        <span class="lower">{{ blog.articles_count }} {{ blog.articles_count | pluralize: 'Article', 'Articles' }}</span>
+      </div>
+      
+      {% for article in blog.articles %}
+      <div class="article clearfix">
+        <div class="content">
+          <h4><a href="{{ article.url }}">{{ article.title }}</a></h4>
+          {{ article.content | strip_html | truncatewords:70 }}
+        </div>
+      </div> <!-- /.article -->
+      {% endfor %}
+    </div> <!-- /.main -->
+    {% include 'sidebar' %}
+  </div> <!-- /.articles -->
+
+  {% include 'pagination' %}
+  {% endpaginate %}
+</div> <!-- /#blog -->
+{% include 'featured-products' %}

@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<!--[if lt IE 7 ]> <html lang="en" class="no-js ie6"> <![endif]-->
+<!--[if IE 7 ]>    <html lang="en" class="no-js ie7"> <![endif]-->
+<!--[if IE 8 ]>    <html lang="en" class="no-js ie8"> <![endif]-->
+<!--[if IE 9 ]>    <html lang="en" class="no-js ie9"> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--> <html lang="en" class="no-js"> <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+  <title>{{ shop.name }} - {{ page_title | escape }}</title>
+
+  {{ content_for_header }}
+
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  {{ 'reset.css' | asset_url | stylesheet_tag }}
+  {{ 'shop.css' | asset_url | stylesheet_tag }}
+
+  <!--[if IE]>
+  {{ 'ie.css' | asset_url | stylesheet_tag }}
+  <![endif]-->
+  <!--[if lt IE 7 ]>
+  {{ 'ie6.css' | asset_url | stylesheet_tag }}
+  <![endif]-->
+
+  {{ 'modernizr.js' | asset_url | script_tag }}
+
+  <script type="text/javascript" src="http://www.google.com/jsapi"></script>
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+
+  {{ 'option_selection.js' | shopify_asset_url | script_tag }}
+  {{ 'api.jquery.js' | asset_url | script_tag }}
+  {{ 'ajaxify-shop.js' | asset_url | script_tag }}
+
+  {{ 'jquery-ui-1.8.6.js' | asset_url | script_tag }}
+  {{ 'jquery.cookie.js' | asset_url | script_tag }}
+  {{ 'jquery.slider.js' | asset_url | script_tag }}
+  {{ 'cloud-zoom.js' | asset_url | script_tag }}
+  {{ 'shop.js' | asset_url | script_tag }}
+
+  {% if settings.typeface_method == "cufon" %}
+
+  {{ 'cufon.js' | asset_url | script_tag }}
+
+  {% if settings.cufon_font == "LeagueGothic" %}{{ 'LeagueGothic.font.js' | asset_url | script_tag }}{% endif %}
+  {% if settings.cufon_font == "Museo" %}{{ 'Museo.font.js' | asset_url | script_tag }}{% endif %}
+  {% if settings.cufon_font == "Conqueror" %}{{ 'Conqueror.font.js' | asset_url | script_tag }}{% endif %}
+  {% if settings.cufon_font == "Raleway" %}{{ 'Raleway.font.js' | asset_url | script_tag }}{% endif %}
+  {% if settings.cufon_font == "StMarie" %}{{ 'StMarie.font.js' | asset_url | script_tag }}{% endif %}
+
+  <script type="text/javascript"> 
+  Cufon.replace('h1,h2,h3,h4,h5,h6', {hover: true});
+  Cufon.replace('a.cufon, a .cufon, .cufon a', {hover: true});
+  </script>
+  {% endif %}
+
+  {% if settings.typeface_method == "google_webfonts" %}
+  <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family={{ settings.google_webfont_font }}">
+  {% endif %}
+
+  <script type="text/javascript">
+  Shopify.money_format = '{{ shop.money_format }}';
+  </script>
+
+  {% capture active_url %}{% if template == "index" %}/{% elsif template == "collection" %}/collections/{{ collection.handle }}{% elsif template == "product" %}{% if collection %}/collections/{{ collection.handle }}{% endif %}/products/{{ product.handle }}{% elsif template == "page" %}/pages/{{ page.handle }}{% elsif template == "blog" %}/blogs/{{ blog.handle }}{% elsif template == "cart" %}/cart{% elsif template == "search" %}/search{% endif %}{% endcapture %}
+</head>
+
+<body>
+  <div class="wrapper">
+
+    <header class="clearfix">
+      <div class="logo">
+        {% if settings.use_logo %}
+        <a href="/" class="shop_logo"><img src="{{ 'logo.png' | asset_url }}" alt="{{ shop.name }}" class="png_bg" /></a>
+        {% else %}
+        <h1><a href="/">{{ shop.name }}</a></h1>
+        {% endif %}
+      </div> <!-- /.logo -->
+      <div class="cart-summary">
+        <span class="cart"><a href="/cart"><span class="cart-total-items"><span class="count">{{ cart.item_count }}</span> {{ cart.item_count | pluralize: 'Item', 'Items' }} (<span class="total_price">{{ cart.total_price | money }}</span>)</span></a></span>
+        <div id="cart-updated"><a href="/cart">Added to cart</a></div>
+      </div> <!-- /.cart-summary -->
+      <p class="contact-info">
+        {% if shop.customer_accounts_enabled %}
+        <span class="customer">
+          {% if customer %}
+          Welcome <a href="/account">{{ customer.first_name }}</a> | {{ 'Logout' | customer_logout_link }}
+          {% else %}
+          {{ 'Customer Login' | customer_login_link }}
+          {% endif %}
+        </span>
+        {% endif %}
+        {% if settings.contact_phone != "" %}
+        <span class="tel">{{ settings.contact_phone }}</span>
+        {% endif %}
+        {% if settings.contact_email != "" %}
+        <span class="email"><a href="mailto:{{ settings.contact_email }}">{{ settings.contact_email }}</a></span>
+        {% endif %}
+      </p>
+    </header>
+
+    <nav class="main">
+      <ul class="clearfix">
+        {% for link in linklists[settings.main_linklist].links %}
+        {% if linklists[link.handle] == empty %}
+        <li><a href="{{ link.url }}" class="{% if link.url == active_url %} current{% endif %}{% if template == 'article' and link.url == blog.url %} current{% endif %}"><span>{{ link.title }}</span></a></li>
+        {% else %}
+        <li class="dropdown"><a href="{{ link.url }}" class="{% if link.url == active_url %} current{% endif %}{% if template == 'article' and link.url == blog.url %} current{% endif %}"><span>{{ link.title }}</span></a>
+          <ul class="dropdown">
+            {% for link in linklists[link.handle].links %}
+            <li><a href="{{ link.url }}"{% if link.url == active_url %} class="current"{% endif %}>{{ link.title }}</a></li>
+            {% endfor %}
+          </ul>
+        </li>
+        {% endif %}
+        {% endfor %}
+        <li class="fr cy">
+          <form id="search_form" class="searchform" name="search" action="/search">
+            {% if template == "search" and search.performed and search.terms != "" %}
+            <input type="text" name="q" class="replace" value="{{ search.terms }}" />
+            {% else %}
+            <input type="text" class="replace" name="q" value="Search..." />
+            {% endif %}
+          </form>
+        </li>
+      </ul>
+    </nav>
+
+    <section id="body" class="clearfix">
+      {{ content_for_layout }}
+    </section> <!-- /#body -->
+
+    <footer class="clearfix">
+      {% if settings.footer_linklist_1.title != "" and linklists[settings.footer_linklist_1].links.size > 0 %}
+      <nav>
+        <div class="more-info clearfix">
+          <span class="upper">{{ linklists[settings.footer_linklist_1].title }}</span>
+        </div>
+        <ul>
+          {% for link in linklists[settings.footer_linklist_1].links %}
+          <li><a href="{{ link.url }}"{% if link.url == active_url %} class="current"{% endif %}{% if template == 'article' and link.url == blog.url %} class="current"{% endif %}>{{ link.title }}</a></li>
+          {% endfor %}
+        </ul>
+      </nav>
+      {% endif %}
+      {% if settings.footer_linklist_2.title != "" and linklists[settings.footer_linklist_2].links.size > 0 %}
+      <nav>
+        <div class="more-info clearfix">
+          <span class="upper">{{ linklists[settings.footer_linklist_2].title }}</span>
+        </div>
+        <ul>
+          {% for link in linklists[settings.footer_linklist_2].links %}
+          <li><a href="{{ link.url }}"{% if link.url == active_url %} class="current"{% endif %}{% if template == 'article' and link.url == blog.url %} class="current"{% endif %}>{{ link.title }}</a></li>
+          {% endfor %}
+        </ul>
+      </nav>
+      {% endif %}
+      {% if settings.footer_linklist_3.title != "" and linklists[settings.footer_linklist_3].links.size > 0 %}
+      <nav>
+        <div class="more-info clearfix">
+          <span class="upper">{{ linklists[settings.footer_linklist_3].title }}</span>
+        </div>
+        <ul>
+          {% for link in linklists[settings.footer_linklist_3].links %}
+          <li><a href="{{ link.url }}"{% if link.url == active_url %} class="current"{% endif %}{% if template == 'article' and link.url == blog.url %} class="current"{% endif %}>{{ link.title }}</a></li>
+          {% endfor %}
+        </ul>
+      </nav>
+      {% endif %}
+      {% if settings.footer_linklist_4.title != "" and linklists[settings.footer_linklist_4].links.size > 0 %}
+      <nav class="last">
+        <div class="more-info clearfix">
+          <span class="upper">{{ linklists[settings.footer_linklist_4].title }}</span>
+        </div>
+        <ul>
+          {% for link in linklists[settings.footer_linklist_4].links %}
+          <li><a href="{{ link.url }}"{% if link.url == active_url %} class="current"{% endif %}{% if template == 'article' and link.url == blog.url %} class="current"{% endif %}>{{ link.title }}</a></li>
+          {% endfor %}
+        </ul>
+      </nav>
+      {% endif %}
+    </footer>
+  </div> <!-- /.wrapper -->
+</body>
+</html>

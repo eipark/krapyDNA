@@ -1,0 +1,29 @@
+<div class="sidebar">
+  <div class="more-info clearfix">
+    <span class="upper">Cart Summary</span> <span class="lower">{{ cart.item_count }} {{ cart.item_count | pluralize: 'Item', 'Items' }} ({{ cart.total_price | money }})</span>
+  </div>
+  {% if cart.item_count > 0 %}
+  <table cellpadding="0" cellspacing="0">
+    <thead>
+      <th>Product</th>
+      <th class="c">Qty</th>
+      <th class="r">Price</th>
+    </thead>
+    <tbody>
+      {% for item in cart.items %}
+      <tr>
+        <td><a href="{{ item.product.url }}">{{ item.product.title }}</a></td>
+        <td class="c">{{ item.quantity }}</td>
+        <td class="r">{{ item.line_price | money }}</td>
+      </tr>
+      {% endfor %}
+      <tr class="summary">
+        <td colspan="2"><a href="/cart" class="btn">View Cart</a></td>
+        <td class="r"><span class="total">{{ cart.total_price | money }}</span></td>
+      </tr>
+    </tbody>
+  </table>
+  {% else %}
+    Your cart is empty
+  {% endif %}
+</div>

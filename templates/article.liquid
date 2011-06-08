@@ -1,0 +1,91 @@
+<div id="article" class="clearfix">
+  <div class="main">
+    <div class="article-body clearfix">
+      <div class="more-info">
+        <span class="upper">{{ article.created_at | date: "%B %d %Y" }}</span>
+        <span class="lower">{{ article.created_at | date: "%A at %I:%M %p" }}</span>
+      </div>
+      <h2>{{ article.title }}</h2>
+      <div class="content">
+        {{ article.content }}
+      </div>
+    </div> <!-- /.article-body -->
+  </div> <!-- /.main -->
+  {% if blog.comments_enabled? %}
+  <div class="sidebar">
+    <div id="product">
+      <div class="more-info clearfix">
+        {% if blog.previous_article %}
+        <div class="fl">
+        <a href="{{ blog.previous_article }}" class="previous_product"><span class="upper">Previous</span> <span class="lower">Article</span></a>
+        </div>
+        {% endif %}
+        {% if blog.next_article %}
+        <div class="fr">
+        <a href="{{ blog.next_article }}" class="next_product"><span class="upper">Next</span> <span class="lower">Article</span></a>
+        </div>
+        {% endif %}
+      </div>
+      
+    </div>
+    <div id="comments" class="comments">
+      {% if article.comments.size > 0 %}
+      <div class="more-info clearfix">
+        <span class="upper">Article</span> 
+        <span class="lower">Comments</span>
+      </div>
+      {% for comment in article.comments %}
+      <div id="comment-{{ comment.id }}" class="comment clearfix">
+        <div class="clearfix">
+          <div class="author">
+            <h5>{{ comment.author }}</h5>
+          </div>
+          <div class="gravatar">
+            <span class="email" style="display:none;">{{ comment.email }}</span>
+            <img src="" class="gravatar" alt="{{ comment.author }}" />
+          </div>
+        </div>
+        <div class="content">
+          {{ comment.content }}
+        </div>
+      </div> <!-- /.comment -->
+      {% endfor %}
+      {% endif %}
+      <div class="comment_form">
+        {% form article %}
+        <div class="more-info clearfix">
+          <span class="upper">Comment</span> 
+          <span class="lower">on this article</span>
+        </div>
+        
+        {% if form.posted_successfully? %}
+        {% if blog.moderated? %}
+        <div class="notice success">
+          Successfully posted your comment. It will have to be approved by the blog owner first before showing up.
+        </div>
+        {% else %}
+        <div class="notice success">Successfully posted your comment.</div>
+        {% endif %}
+        {% endif %}
+
+        {% if form.errors %}
+        <div class="notice error">Not all the fields have been filled out correctly</div>
+        {% endif %}
+
+        <input type="text" id="comment_author" name="comment[author]" size="40" value="Your name" class="replace"{% if form.errors contains 'author' %} class="input-error"{% endif %} />
+        <input type="text" id="comment_email" name="comment[email]" size="40" value="Your email" class="replace"{% if form.errors contains 'email' %} class="input-error"{% endif %} />
+        <textarea id="comment_body" name="comment[body]" cols="40" rows="5" class="replace"{% if form.errors contains 'body' %} class="input-error"{% endif %}>{{form.body}}</textarea>
+
+        <input type="submit" value="Post comment" id="comment-submit" />
+
+        {% if blog.moderated? %}
+        <div class="notice">Comments have to be approved before showing up</div>
+        {% endif %}
+
+        {% endform %}
+      </div> <!-- /#comments -->
+    </div> <!-- /div.comment_form -->
+  </div> <!-- /.sidebar -->
+  {% endif %}
+</div> <!-- /#article -->
+{% include 'featured-products' %}

@@ -1,0 +1,8 @@
+#product .images a, #product .images img {display:inline !important;}
+.scroll {position:relative;}
+
+#cart-updated {position:fixed !important; left:50% !important; margin-left:310px !important; top:74px !important; width:170px !important;}
+
+img { -ms-interpolation-mode: bicubic; }
+
+#content-slide .product .details {right:15%;}

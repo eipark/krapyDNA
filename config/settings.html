@@ -1,0 +1,443 @@
+<fieldset>
+  <legend>General Theme Options</legend>
+  <table class="search_bar_location">
+    <tr>
+      <th><label for="use_logo">Use a custom logo?</label></th>
+      <td>
+        <input type="checkbox" id="use_logo" name="use_logo" value="1" />
+      </td>
+    </tr>
+    <tr>
+      <th><label for="logo">Shop Logo</label></th>
+      <td>
+        <input type="file" id="logo" name="logo.png" data-max-width="700" data-max-height="600" />
+      </td>
+    </tr>
+    <tr>
+      <th><label for="main_linklist">Main Menu Linklist</label></th>
+      <td><select name="main_linklist" class="linklist" /></td>
+    </tr>
+    <tr>
+      <th><label for="sidebar_position">Sidebar Position</label></th>
+      <td>
+        <input type="radio" name="sidebar_position" value="left" /> Left
+        <input type="radio" name="sidebar_position" value="right" /> Right
+      </td>
+    </tr>
+    <tr>
+      <th><label for="footer_linklist_1">Footer Linklist 1</label></th>
+      <td><select name="footer_linklist_1" class="linklist" /></td>
+    </tr>
+    <tr>
+      <th><label for="footer_linklist_2">Footer Linklist 2</label></th>
+      <td><select name="footer_linklist_2" class="linklist" /></td>
+    </tr>
+    <tr>
+      <th><label for="footer_linklist_3">Footer Linklist 3</label></th>
+      <td><select name="footer_linklist_3" class="linklist" /></td>
+    </tr>
+    <tr>
+      <th><label for="footer_linklist_4">Footer Linklist 4</label></th>
+      <td><select name="footer_linklist_4" class="linklist" /></td>
+    </tr>
+    <tr>
+      <th><label for="featured_products">Featured Products Collection</label></th>
+      <td><select name="featured_products" class="collection" />
+        (This collection is displayed at the bottom of several pages. Only the first 4 products will be shown.)
+      </td>
+    </tr>
+    <tr>
+      <th><label for="pagination_limit">Pagination Limit</label></th>
+      <td>
+        <select name="pagination_limit" id="pagination_limit">
+          <option value="48">48</option>
+          <option value="32">32</option>
+          <option value="24">24</option>
+          <option value="20" selected="selected">20</option>
+          <option value="16">16</option>
+          <option value="12">12</option>
+          <option value="8">8</option>
+          <option value="4">4</option>
+        </select>
+      </td>
+    </tr>
+    <tr>
+      <th><label for="contact_phone">Phone Number (for header)</label></th>
+      <td>
+        <input type="text" id="contact_phone" name="contact_phone" value="1.888.555.1010" />
+      </td>
+    </tr>
+    <tr>
+      <th><label for="contact_email">Email Address (for header)</label></th>
+      <td>
+        <input type="text" id="contact_email" name="contact_email" value="contact@yourshop.com" />
+      </td>
+    </tr>
+  </table>
+</fieldset>
+<fieldset>
+  <legend>Colors</legend>
+  <table>
+    <tr>
+      <th><label for="shop_bg_color">Shop Background Color</label></th>
+      <td><input id="shop_bg_color" name="shop_bg_color" class="color" value="#f0f0f0" /></td>
+    </tr>
+    <tr>
+      <th><label for="use_custom_bg_image">Use a background image?</label></th>
+      <td>
+        <input type="checkbox" id="use_custom_bg_image" name="use_custom_bg_image" value="1" />
+      </td>
+    </tr>
+    <tr>
+      <th><label for="custom_bg_image">Background Image</label></th>
+      <td>
+        <input type="file" id="custom_bg_image" name="custom_bg.png" data-max-width="700" data-max-height="700" />
+      </td>
+    </tr>
+    <tr>
+      <th><label for="header_color">Header Color</label></th>
+      <td><input id="header_color" name="header_color" class="color" value="#000000" /></td>
+    </tr>
+    <tr>
+      <th><label for="text_color">Text Color</label></th>
+      <td><input id="text_color" name="text_color" class="color" value="#808080" /></td>
+    </tr>
+    <tr>
+      <th><label for="link_color">Link Color</label></th>
+      <td><input id="link_color" name="link_color" class="color" value="#333333" /></td>
+    </tr>
+    <tr>
+      <th><label for="link_hover_color">Link Hover Color</label></th>
+      <td><input id="link_hover_color" name="link_hover_color" class="color" value="#000000" /></td>
+    </tr>
+    <tr>
+      <th><label for="btn_color">Button Color</label></th>
+      <td><input id="btn_color" name="btn_color" class="color" value="#000000" /></td>
+    </tr>
+    <tr>
+      <th><label for="btn_hover_color">Button Hover / On Sale Color</label></th>
+      <td><input id="btn_hover_color" name="btn_hover_color" class="color" value="#AE3333" /></td>
+    </tr>
+  </table>
+</fieldset>
+<fieldset>
+  <legend>Typefaces</legend>
+  <table>
+    <tr>
+      <th><label for="typeface_method">Choose a method for rendering the headline typeface:</label></th>
+      <td>
+        <input type="radio" name="typeface_method" value="google_webfonts" /> Google WebFonts
+        <input type="radio" name="typeface_method" value="cufon" /> Cufon
+        <input type="radio" name="typeface_method" value="websafe" /> Websafe fonts
+        <p>Here is a <a href="http://www.google.com/webfonts" target="_blank">preview list</a> of some of the Google Webfonts you may use.</p>
+        
+      </td>
+    </tr>
+    
+    <tr>
+      <th><label for="google_webfont_font">Google WebFont Typeface</label></th>
+      <td>
+        <select name="google_webfont_font" id="google_webfont_font">
+          <option value='Allan'>Allan</option>
+          <option value='Anton'>Anton</option>
+          <option value='Arvo'>Arvo</option>
+          <option value='Bevan'>Bevan</option>
+          <option value='Buda'>Buda</option>
+          <option value='Cabin'>Cabin</option>
+          <option value='Calligraffitti'>Calligraffitti</option>
+          <option value='Cherry+Cream+Soda'>Cherry Cream Soda</option>
+          <option value='Chewy'>Chewy</option>
+          <option value='Copse'>Copse</option>
+          <option value='Corben'>Corben</option>
+          <option value='Dancing+Script'>Dancing Script</option>
+          <option value='Goudy+Bookletter+1911'>Goudy Bookletter 1911</option>
+          <option value='Gruppo'>Gruppo</option>
+          <option value='Josefin+Slab'>Josefin Slab</option>
+          <option value='Josefin+Sans'>Josefin Sans</option>
+          <option value='Just+Another+Hand'>Just Another Hand</option>
+          <option value='Kreon'>Kreon</option>
+          <option value='Luckiest+Guy'>Luckiest Guy</option>
+          <option value='Merriweather'>Merriweather</option>
+          <option value='Molengo'>Molengo</option>
+          <option value='Permanent+Marker'>Permanent Marker</option>
+          <option value='Philosopher'>Philosopher</option>
+          <option value='Vibur'>Vibur</option>
+        </select>
+      </td>
+    </tr>
+    <tr>
+      <th><label for="cufon_font">Cufon Typeface</label></th>
+      <td>
+        <select name="cufon_font" id="cufon_font">
+          <option value='LeagueGothic'>League Gothic</option>
+          <option value='Conqueror'>Conqueror Sans</option>
+          <option value='Museo'>Museo Sans</option>
+          <option value='Raleway'>Raleway</option>
+          <option value='StMarie'>St Marie</option>
+        </select>
+      </td>
+    </tr>
+    <tr>
+      <th><label for="websafe_font">Websafe Typeface</label></th>
+      <td>
+        <select class="font" name="websafe_font" id="websafe_font">
+          <optgroup label="Sans-serif">
+            <option selected="selected" value="Helvetica, Arial, sans-serif">Helvetica/Arial</option> 
+            <option value="Impact, Charcoal, Helvetica, Arial, sans-serif">Impact</option> 
+            <option value="'Lucida Grande', 'Lucida Sans Unicode', 'Lucida Sans', Lucida, Helvetica, Arial, sans-serif">Lucida Grande</option> 
+            <option value="Trebuchet MS, sans-serif">Trebuchet MS</option> 
+            <option value="Verdana, Helvetica, Arial, sans-serif">Verdana</option>
+          </optgroup>
+          <optgroup label="Serif">
+            <option value="Garamond, Baskerville, Caslon, serif">Garamond</option> 
+            <option value="Georgia, Utopia, 'Times New Roman', Times, serif">Georgia</option> 
+            <option value="Palatino, 'Palatino Linotype', 'Book Antiqua', serif">Palatino</option> 
+            <option value="'Times New Roman', Times, serif">Times New Roman</option>
+          </optgroup>
+          <optgroup label="Monospace">
+            <option value="'Courier New', Courier, monospace">Courier New</option> 
+            <option value="Monaco, 'Lucida Console', 'DejaVu Sans Mono', monospace">Monaco/Lucida Console</option>
+          </optgroup>
+        </select>
+      </td>
+    </tr>
+    <tr>
+      <th><label for="header_weight">Header Font Weight</label></th>
+      <td>
+        <select name="header_weight" id="header_weight">
+          <option value="700" selected="selected">Bold</option>
+          <option value="400">Regular</option>
+        </select>
+        <p>Font weight will have no effect if Cufon is selected as the method for rendering headline typefaces</p>
+      </td>
+    </tr>
+    <tr>
+      <th><label for="header_font_style">Header Font Style</label></th>
+      <td>
+        <select name="header_font_style" id="header_font_style">
+          <option value="none" selected="selected">None</option>
+          <option value="uppercase">Uppercase</option>
+          <option value="lowercase">Lowercase</option>
+        </select>
+      </td>
+    </tr>
+    <tr>
+      <th><label for="regular_font">Regular Text Typeface</label></th>
+      <td>
+        <select class="font" name="regular_font" id="regular_font">
+          <option value="'Lucida Grande', Helvetica, Arial, sans-serif" selected="selected">Lucida Grande</option>
+        </select>
+      </td>
+    </tr>
+  </table>
+</fieldset>
+<fieldset>
+  <legend>Navigation Settings</legend>
+  <table>
+    <tr>
+      <th><label for="nav_font_size">Navigation Font Size</label></th>
+      <td>
+        <select name="nav_font_size" id="nav_font_size">
+          <option value="20px">20 px</option>
+          <option value="18px">18 px</option>
+          <option value="16px">16 px</option>
+          <option value="14px">14 px</option>
+          <option value="13px" selected="selected">13 px</option>
+          <option value="12px">12 px</option>
+          <option value="11px">11 px</option>
+        </select>
+      </td>
+    </tr>
+    <tr>
+      <th><label for="nav_weight">Navigation Font Weight</label></th>
+      <td>
+        <select name="nav_weight" id="nav_weight">
+          <option value="700" selected="selected">Bold</option>
+          <option value="400">Regular</option>
+        </select>
+      </td>
+    </tr>
+    <tr>
+      <th><label for="nav_font_style">Navigation Font Style</label></th>
+      <td>
+        <select name="nav_font_style" id="nav_font_style">
+          <option value="none" selected="selected">None</option>
+          <option value="uppercase">Uppercase</option>
+          <option value="lowercase">Lowercase</option>
+        </select>
+      </td>
+    </tr>
+    <tr>
+      <th><label for="nav_link_color">Nav Link Color</label></th>
+      <td><input id="nav_link_color" name="nav_link_color" class="color" value="#333333" /></td>
+    </tr>
+    <tr>
+      <th><label for="nav_link_hover_color">Nav Link Hover Color</label></th>
+      <td><input id="nav_link_hover_color" name="nav_link_hover_color" class="color" value="#ffffff" /></td>
+    </tr>
+    <tr>
+      <th><label for="selected_nav_link_color">Selected Nav Link Color</label></th>
+      <td><input id="selected_nav_link_color" name="selected_nav_link_color" class="color" value="#ffffff" /></td>
+    </tr>
+    <tr>
+      <th><label for="selected_nav_link_bg_color">Selected Nav Link Background Color</label></th>
+      <td><input id="selected_nav_link_bg_color" name="selected_nav_link_bg_color" class="color" value="#dddddd" /></td>
+    </tr>
+  </table>
+</fieldset>
+<fieldset>
+  <legend>Home Page</legend>
+  <table>
+    <tr>
+      <th><label for="frontpage_collection">Frontpage Collection</label></th>
+      <td><select name="frontpage_collection" class="collection" /></td>
+    </tr>
+
+    <tr>
+      <th><label for="homepage_banner">Home Page Banner</label></th>
+      <td>
+        <input type="radio" name="homepage_banner" value="slideshow" /> Slideshow of custom images
+        <input type="radio" name="homepage_banner" value="slider" /> Horizontal Slider of products
+      </td>
+    </tr>
+    <tr>
+      <th><label for="slider_collection">Horizontal Slider Product Collection</label></th>
+      <td><select name="slider_collection" class="collection" /></td>
+    </tr>
+    <tr>
+      <th><label for="slideshow_speed">Show slideshow images for</label></th>
+      <td>
+        <select name="slideshow_speed" id="slideshow_speed">
+          <option value="8000">8 seconds</option>
+          <option value="7000">7 seconds</option>
+          <option value="6000">6 seconds</option>
+          <option value="5000" selected="selected">5 seconds</option>
+          <option value="4000">4 seconds</option>
+          <option value="3000">3 seconds</option>
+          <option value="2000">2 seconds</option>
+        </select>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        &nbsp;
+      </th>
+      <td>
+        <h3>Slideshow Images</h3>
+        For best results, upload images that are 952px wide. Try to keep your slideshow images the same size.
+      </td>
+    </tr>
+
+    <tr>
+      <th><label for="slideshow_1">Slideshow Image 1</label></th>
+      <td>
+        <input type="file" id="slideshow_1" name="slideshow_1.jpg" data-max-width="952" />
+      </td>
+    </tr>
+    <tr>
+      <th><label for="image_1_link">Link Image 1 to URL:</label></th>
+      <td>
+        <input type="text" id="image_1_link" name="image_1_link" value="" />
+      </td>
+    </tr>
+    <tr>
+      <th><label for="slideshow_2">Slideshow Image 2</label></th>
+      <td>
+        <input type="file" id="slideshow_2" name="slideshow_2.jpg" data-max-width="952" />
+      </td>
+    </tr>
+    <tr>
+      <th><label for="image_2_link">Link Image 2 to URL:</label></th>
+      <td>
+        <input type="text" id="image_2_link" name="image_2_link" value="" />
+      </td>
+    </tr>
+    <tr>
+      <th><label for="slideshow_3">Slideshow Image 3</label></th>
+      <td>
+        <input type="file" id="slideshow_3" name="slideshow_3.jpg" data-max-width="952" />
+      </td>
+    </tr>
+    <tr>
+      <th><label for="image_3_link">Link Image 3 to URL:</label></th>
+      <td>
+        <input type="text" id="image_3_link" name="image_3_link" value="" />
+      </td>
+    </tr>
+    <tr>
+      <th><label for="slideshow_4">Slideshow Image 4</label></th>
+      <td>
+        <input type="file" id="slideshow_4" name="slideshow_4.jpg" data-max-width="952" />
+      </td>
+    </tr>
+    <tr>
+      <th><label for="image_4_link">Link Image 4 to URL:</label></th>
+      <td>
+        <input type="text" id="image_4_link" name="image_4_link" value="" />
+      </td>
+    </tr>
+    <tr>
+      <th><label for="slideshow_5">Slideshow Image 5</label></th>
+      <td>
+        <input type="file" id="slideshow_5" name="slideshow_5.jpg" data-max-width="952" />
+      </td>
+    </tr>
+    <tr>
+      <th><label for="image_5_link">Link Image 5 to URL:</label></th>
+      <td>
+        <input type="text" id="image_5_link" name="image_5_link" value="" />
+      </td>
+    </tr>
+  </table>
+</fieldset>
+<fieldset>
+  <legend>Product Page</legend>
+  <table>
+    <tr>
+      <th><label for="product_images_position">Product Images Position</label></th>
+      <td>
+        <input type="radio" name="product_images_position" value="left" /> Left
+        <input type="radio" name="product_images_position" value="right" /> Right
+      </td>
+    </tr>
+    <tr>
+      <th><label for="product_description_position">Description Position</label></th>
+      <td>
+        <input type="radio" name="product_description_position" value="top" /> Above 'Buy Now'
+        <input type="radio" name="product_description_position" value="bottom" /> Below 'Buy Now'
+      </td>
+    </tr>
+  </table>
+</fieldset>
+<fieldset>
+  <legend>Collection Page</legend>
+  <table>
+    <tr>
+      <th><label for="collection_tags">Display Product Tags</label></th>
+      <td>
+        <input type="checkbox" id="collection_tags" name="collection_tags" value="1" />
+      </td>
+    </tr>
+  </table>
+</fieldset>
+<fieldset>
+  <legend>Advanced Settings</legend>
+  <table>
+    <tr>
+      <th><label for="logo_height">Logo Height in pixels (Numerical values only! ie. 120 NOT 120px).</label></th>
+      <td>
+        <strong>This only matters if you care about showing a checkout logo for IE6!</strong>
+        <input type="text" id="logo_height" name="logo_height" value="" />
+      </td>
+    </tr>
+    <tr>
+      <th><label for="current_preset">Optimize colors (borders, text, etc.) for:</label></th>
+      <td>
+        <select name="current_preset" id="current_preset">
+          <option value="light">Light Background</option>
+          <option value="dark">Dark Background</option>
+        </select>
+      </td>
+    </tr>
+  </table>
+</fieldset>

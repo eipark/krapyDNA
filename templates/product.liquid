@@ -1,0 +1,197 @@
+<div id="product" class="{{ product.handle }}{% if product.images.size == 1 %} one_image{% endif %} clearfix">
+  
+  <div class="product_body clearfix">
+    <div class="images">
+      <div class="featured">
+        <div class="image">
+          <a href="{{ product.featured_image | product_img_url: 'original' }}" class="cloud-zoom" rel="position: 'inside', showTitle: 'false'" id="placeholder"><img src="{{ product.featured_image | product_img_url: 'grande' }}" alt="{{ product.title | escape }}" /></a>
+        </div>
+      </div> <!-- /.featured -->
+      {% if product.images.size > 1 %}
+      <div class="thumbs clearfix">
+        {% for image in product.images %}
+        <div class="image">
+          <a href="{{ image | product_img_url: 'original' }}" class="cloud-zoom-gallery" rel="useZoom: 'placeholder', smallImage: '{{ image | product_img_url: 'grande' }}', tint: '#ffffff'">
+            <img src="{{ image | product_img_url: 'small' }}" alt="{{ product.title | escape }}" />
+          </a>
+        </div>
+        {% endfor %}
+      </div><!-- /.thumbs -->
+      {% endif %}
+    </div> <!-- /.images -->
+
+    <div class="content">
+      {% if collection %}
+      <div class="more-info clearfix">
+        {% if collection.previous_product %}
+        <div class="fl">
+          <a href="{{ collection.previous_product }}" class="previous_product"><span class="upper">Previous</span> <span class="lower">Product</span></a>
+        </div>
+        {% endif %}
+        {% if collection.next_product %}
+        <div class="fr">
+          <a href="{{ collection.next_product }}" class="next_product"><span class="upper">Next</span> <span class="lower">Product</span></a>
+        </div>
+        {% endif %}
+      </div>
+      {% endif %}
+      
+      <h2 class="title">{{ product.title }}</h2>
+      
+      {% if settings.product_description_position == "top" %}
+      <div class="description">
+        {{ product.description }}
+      </div>
+      <div class="details"><span class="type">type: {{ product.type | link_to_type }}</span> <span class="vendor">vendor: {{ product.vendor | link_to_vendor }}</span></div>
+      {% endif %}
+      
+      <form action="/cart/add" method="post" class="variants clearfix">
+        {% if product.options.size > 1 %}
+        <div class="select clearfix">
+          <select id="product-select" name='id'>
+            {% for variant in product.variants %}
+            <option value="{{ variant.id }}">{{ variant.title }} - {{ variant.price | money }}</option>
+            {% endfor %}
+          </select>
+        </div>
+        {% elsif product.options.size == 1 and product.variants.size > 1 %}
+        <div class="select clearfix">
+          <label>{{ product.options[0] }}</label>
+          <select id="product-select" name='id'>
+            {% for variant in product.variants %}
+            <option value="{{ variant.id }}">{{ variant.title }} - {{ variant.price | money }}</option>
+            {% endfor %}
+          </select>
+        </div>
+        {% else %}
+        <div style="display:none;">
+          <input type="hidden" name="id" value="{{ product.variants.first.id }}" />
+          <input type="radio" name="{{ product.handle }}" value="{{ product.variants.first.title }}" checked="checked" /> {{ product.variants.first.title }}
+        </div>
+        {% endif %}
+        
+        {% if product.price_min < product.compare_at_price_min %}
+        <p class="price" id="price-preview">{{ product.price_min | money }} <span>was {{ product.compare_at_price_min | money }}</span></p>
+        {% else %}
+        <p class="price" id="price-preview">{{ product.price_min | money }}</p>
+        {% endif %}
+        
+        <div class="purchase clearfix">
+          {% if product.variants.first.available == true && product.variants.size == 1 %}
+          <span><input type="submit" name="add" id="add-to-cart" value="Add to Cart" class="cart cufon" /></span>
+          {% else %}
+          <span><input type="submit" name="add" id="add-to-cart" value="Sold Out" disabled="disabled" class="cart cufon disabled" /></span>
+          {% endif %}
+        </div>
+      </form>
+      
+      {% if settings.product_description_position == "bottom" %}
+      <div class="description">
+        {{ product.description }}
+      </div>
+      <div class="details"><span class="type">type: {{ product.type | link_to_type }}</span> <span class="vendor">by: {{ product.vendor | link_to_vendor }}</span></div>
+      {% endif %}
+      
+    </div>
+  </div> <!-- /.product_body -->
+  
+  {% if collection and collection.products.size > 1 %}
+  
+  <div class="more-info">
+    <span class="upper">More Products</span>
+    <span class="lower">From This Collection</span>
+  </div>
+  
+  <div class="slider-container">
+    <div id="content-scroll" class="scroll">
+      <div id="content-slide">
+        {% for product in collection.products %}
+        {% include 'product-slide-small' %}
+        {% endfor %}
+      </div><!-- /#latest-products -->
+    </div>
+    <div class="slider">
+      <span class="ui-slider-handle">&nbsp;</span>
+    </div>
+  </div>
+  {% endif %}
+
+  <div id="recently-viewed" style="display:none;">
+    
+    <div class="more-info">
+      <span class="upper">Recently</span>
+      <span class="lower">Viewed Items</span>
+    </div>
+    
+    <div id="content-table" class="products clearfix">
+
+    </div>
+  </div> <!-- /#recently-viewed -->
+
+</div> <!-- /#product -->
+<script type="text/javascript">
+// <![CDATA[  
+var selectCallback = function(variant, selector) {
+  if (variant && variant.available == true) {
+    // selected a valid variant
+    jQuery('#add-to-cart').removeClass('disabled').removeAttr('disabled'); // remove unavailable class from add-to-cart button, and re-enable button
+    if(variant.price < variant.compare_at_price){
+      jQuery('#price-preview').html(Shopify.formatMoney(variant.price, "{{shop.money_format}}") + " <span>was " + Shopify.formatMoney(variant.compare_at_price, "{{shop.money_format}}") + "</span>");
+    } else {
+      jQuery('#price-preview').html(Shopify.formatMoney(variant.price, "{{shop.money_format}}"));
+    }
+
+  } else {
+    // variant doesn't exist
+    jQuery('#add-to-cart').addClass('disabled').attr('disabled', 'disabled');      // set add-to-cart button to unavailable class and disable button
+    var message = variant ? "Sold Out" : "Unavailable";    
+    jQuery('#product .variants .price').text(message); // update price-field message
+  }
+};
+
+function remove(s, t) {
+  /*
+  **  Remove all occurrences of a token in a string
+  **    s  string to be processed
+  **    t  token to be removed
+  **  returns new string
+  */
+  i = s.indexOf(t);
+  r = "";
+  if (i == -1) return s;
+  r += s.substring(0,i) + remove(s.substring(i + t.length), t);
+  return r;
+}
+
+// initialize multi selector for product
+jQuery(function() {
+  if(jQuery.cookie("viewed-products") != null){ // if cookie exists...
+    var products = jQuery.cookie("viewed-products");
+    var productHandles = products.split(" ");
+    var matches = 0;
+    var limit = 4;
+    for(var i = (productHandles.length - 1); i >= 0; i--) {
+      if(productHandles[i] != "{{ product.handle }}" && productHandles[i] != "" && (matches < limit)){
+        Shopify.getProduct(productHandles[i]);
+        matches++;
+      }
+    }
+
+    if(products.indexOf("{{ product.handle }}") == -1){ // add current product to list if it isn't already there
+    products += " {{ product.handle }}";
+    jQuery.cookie("viewed-products", products, {path: "/"});
+    } else { // if it is already there, push it to the end of the string
+      var newstring = remove(products, '{{ product.handle }}');
+      newstring += " {{ product.handle }}";
+      jQuery.cookie("viewed-products", newstring.replace(/ /g,' '), {path: "/"});
+    }
+    } else { // create cookie if it doesn't already exist
+    jQuery.cookie("viewed-products", "{{ product.handle }}", {path: "/"});
+  }
+  
+  {% if product.variants.size > 1 or product.options.size > 1 %}
+  new Shopify.OptionSelectors("product-select", { product: {{ product | json }}, onVariantSelected: selectCallback });
+  {% endif %}
+});
+// ]]>
+</script>

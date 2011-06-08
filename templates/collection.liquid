@@ -1,0 +1,69 @@
+<div id="collection" class="{{ collection.handle }} clearfix">
+  {% if collection.handle == "all" %}
+
+  <div id="content-table" class="clearfix">
+    {% for collection in collections %}
+    {% unless collection.all_products_count  == 0 %}
+    <div id="product-{{ product.handle }}" class="product{% cycle 'featured': '', '', '', ' last' %}">
+      <div class="image">
+        <a href="{{ collection.url }}"><img src="{{ collection.products.first.featured_image | product_img_url: 'large' }}" alt="{{ collection.title | escape  }}" /></a>
+      </div>
+      <div class="details clearfix">
+        <a href="{{ collection.url }}">
+          <span class="title">{{ collection.title }}</span>
+        </a>
+      </div>
+    </div>
+    {% cycle 'clear-table': '', '', '', '<div style="clear:both;"></div>' %}
+    {% endunless %}
+    {% endfor %}
+  </div>
+
+  {% else %}
+  {% paginate collection.products by settings.pagination_limit %}
+
+  <div class="more-info clearfix">
+    <div class="fl">
+      <span class="upper">{{ collection.title }}</span>
+      <span class="lower">{{ collection.all_products_count }} {{ collection.all_products_count | pluralize: 'Item', 'Items' }} total</span>
+    </div>
+    <div class="fr">
+      <span class="upper">&nbsp;</span>
+      <span class="lower">{% include 'pagination' %}</span>
+    </div>
+  </div>
+
+  <div id="content-table" class="clearfix">
+    {% for product in collection.products %}
+    {% include 'product-loop' with collection.handle %}
+    {% endfor %}
+  </div>
+
+  {% if settings.collection_tags %}
+  <div class="more-info clearfix">
+    <span class="upper">Browse</span> 
+    <span class="lower">This Collection</span>
+  </div>
+
+  <ul class="tags clearfix">
+    <li{% unless current_tags %} class="active"{% endunless %}><a href="/collections/{{ collection.handle }}">All</a>
+    {% for tag in collection.all_tags %}
+    {% if current_tags contains tag %}
+    <li class="active">{{ tag | link_to_remove_tag: tag }}</li>
+    {% else %}
+    <li>{{ tag | link_to_tag: tag }}</li>
+    {% endif %}
+    {% endfor %}
+  </ul>
+  {% endif %}
+
+  <div class="more-info clearfix">
+    <div class="fr">
+      <span class="upper">&nbsp;</span>
+      <span class="lower">{% include 'pagination' %}</span>
+    </div>
+  </div>
+
+  {% endpaginate %}
+  {% endif %}
+</div> <!-- /#collection -->
