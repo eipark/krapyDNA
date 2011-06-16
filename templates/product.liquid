@@ -1,5 +1,5 @@
 <div id="product" class="{{ product.handle }}{% if product.images.size == 1 %} one_image{% endif %} clearfix">
-  
+
   <div class="product_body clearfix">
     <div class="images">
       <div class="featured">
@@ -21,30 +21,15 @@
     </div> <!-- /.images -->
 
     <div class="content">
-      {% if collection %}
-      <div class="more-info clearfix">
-        {% if collection.previous_product %}
-        <div class="fl">
-          <a href="{{ collection.previous_product }}" class="previous_product"><span class="upper">Previous</span> <span class="lower">Product</span></a>
-        </div>
-        {% endif %}
-        {% if collection.next_product %}
-        <div class="fr">
-          <a href="{{ collection.next_product }}" class="next_product"><span class="upper">Next</span> <span class="lower">Product</span></a>
-        </div>
-        {% endif %}
-      </div>
-      {% endif %}
-      
       <h2 class="title">{{ product.title }}</h2>
-      
+
       {% if settings.product_description_position == "top" %}
       <div class="description">
         {{ product.description }}
-      </div>
-      <div class="details"><span class="type">type: {{ product.type | link_to_type }}</span> <span class="vendor">vendor: {{ product.vendor | link_to_vendor }}</span></div>
+      </div><!--
+      <div class="details"><span class="type">type: {{ product.type | link_to_type }}</span> <span class="vendor">vendor: {{ product.vendor | link_to_vendor }}</span></div>-->
       {% endif %}
-      
+
       <form action="/cart/add" method="post" class="variants clearfix">
         {% if product.options.size > 1 %}
         <div class="select clearfix">
@@ -69,13 +54,13 @@
           <input type="radio" name="{{ product.handle }}" value="{{ product.variants.first.title }}" checked="checked" /> {{ product.variants.first.title }}
         </div>
         {% endif %}
-        
+
         {% if product.price_min < product.compare_at_price_min %}
         <p class="price" id="price-preview">{{ product.price_min | money }} <span>was {{ product.compare_at_price_min | money }}</span></p>
         {% else %}
         <p class="price" id="price-preview">{{ product.price_min | money }}</p>
         {% endif %}
-        
+
         <div class="purchase clearfix">
           {% if product.variants.first.available == true && product.variants.size == 1 %}
           <span><input type="submit" name="add" id="add-to-cart" value="Add to Cart" class="cart cufon" /></span>
@@ -84,24 +69,23 @@
           {% endif %}
         </div>
       </form>
-      
+
       {% if settings.product_description_position == "bottom" %}
       <div class="description">
         {{ product.description }}
-      </div>
-      <div class="details"><span class="type">type: {{ product.type | link_to_type }}</span> <span class="vendor">by: {{ product.vendor | link_to_vendor }}</span></div>
+      </div><!--
+      <div class="details"><span class="type">type: {{ product.type | link_to_type }}</span> <span class="vendor">by: {{ product.vendor | link_to_vendor }}</span></div>-->
       {% endif %}
-      
     </div>
   </div> <!-- /.product_body -->
-  
+
   {% if collection and collection.products.size > 1 %}
-  
+
   <div class="more-info">
     <span class="upper">More Products</span>
     <span class="lower">From This Collection</span>
   </div>
-  
+
   <div class="slider-container">
     <div id="content-scroll" class="scroll">
       <div id="content-slide">
@@ -115,22 +99,22 @@
     </div>
   </div>
   {% endif %}
-
+<!--
   <div id="recently-viewed" style="display:none;">
-    
+
     <div class="more-info">
       <span class="upper">Recently</span>
       <span class="lower">Viewed Items</span>
     </div>
-    
+
     <div id="content-table" class="products clearfix">
 
     </div>
-  </div> <!-- /#recently-viewed -->
+  </div>--> <!-- /#recently-viewed -->
 
 </div> <!-- /#product -->
 <script type="text/javascript">
-// <![CDATA[  
+// <![CDATA[
 var selectCallback = function(variant, selector) {
   if (variant && variant.available == true) {
     // selected a valid variant
@@ -144,7 +128,7 @@ var selectCallback = function(variant, selector) {
   } else {
     // variant doesn't exist
     jQuery('#add-to-cart').addClass('disabled').attr('disabled', 'disabled');      // set add-to-cart button to unavailable class and disable button
-    var message = variant ? "Sold Out" : "Unavailable";    
+    var message = variant ? "Sold Out" : "Unavailable";
     jQuery('#product .variants .price').text(message); // update price-field message
   }
 };
@@ -188,7 +172,7 @@ jQuery(function() {
     } else { // create cookie if it doesn't already exist
     jQuery.cookie("viewed-products", "{{ product.handle }}", {path: "/"});
   }
-  
+
   {% if product.variants.size > 1 or product.options.size > 1 %}
   new Shopify.OptionSelectors("product-select", { product: {{ product | json }}, onVariantSelected: selectCallback });
   {% endif %}

@@ -1,7 +1,7 @@
 <div id="search" class="clearfix">
   {% if search.performed %}
   <div class="main">
-    {% paginate search.results by settings.pagination_limit %}  
+    {% paginate search.results by settings.pagination_limit %}
     <div class="more-info clearfix">
       <div class="fl">
         <span class="upper">Search Results</span>
@@ -15,11 +15,11 @@
     {% if search.terms == "" %}
     <p>Your search query was empty.</p>
     {% else %}
-    {% if search.results == empty %}  
+    {% if search.results == empty %}
     <div class="empty">
       Your search for "{{search.terms | escape}}" did not yield any results
-    </div>              
-    {% else %}  
+    </div>
+    {% else %}
 
     <div class="results">
       {% for item in search.results %}
@@ -37,7 +37,7 @@
 
     {% endif %}
     {% endif %}
-    
+
     <div class="more-info clearfix">
       <div class="fr">
         <span class="upper">&nbsp;</span>
@@ -52,7 +52,7 @@
   {% else %}
 
   <div id="not_found">
-    <h2>Search our shop</h2>
+    <h2>Search krapyDNA</h2>
     <form id="search_form" class="searchform" name="search" action="/search">
       <input type="text" class="replace" name="q" value="Search..." />
     </form>

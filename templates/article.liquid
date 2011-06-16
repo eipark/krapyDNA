@@ -26,12 +26,12 @@
         </div>
         {% endif %}
       </div>
-      
+
     </div>
     <div id="comments" class="comments">
       {% if article.comments.size > 0 %}
       <div class="more-info clearfix">
-        <span class="upper">Article</span> 
+        <span class="upper">Article</span>
         <span class="lower">Comments</span>
       </div>
       {% for comment in article.comments %}
@@ -54,10 +54,10 @@
       <div class="comment_form">
         {% form article %}
         <div class="more-info clearfix">
-          <span class="upper">Comment</span> 
+          <span class="upper">Comment</span>
           <span class="lower">on this article</span>
         </div>
-        
+
         {% if form.posted_successfully? %}
         {% if blog.moderated? %}
         <div class="notice success">
@@ -88,4 +88,4 @@
   </div> <!-- /.sidebar -->
   {% endif %}
 </div> <!-- /#article -->
-{% include 'featured-products' %}
+<!--{% include 'featured-products' %}-->

@@ -1,25 +1,13 @@
-{% capture collection_handle %}{{ product-loop | handleize }}{% endcapture %}
-{% if collection_handle == "" %}
-<div id="product-loop-{{ product.handle }}" class="product{% cycle 'featured': '', '', '', ' last' %}">
-  <div class="image">
-    <a href="{{ product.url }}"><img src="{{ product.featured_image | product_img_url: 'large' }}" alt="{{ product.title | escape  }}" /></a>
-  </div>
-  <div class="details clearfix">
-    <a href="{{ product.url }}">
-      <span class="title">{{ product.title }}</span>
-    </a>
-  </div>
-</div>
-{% else %}
-<div id="product-loop-{{ product.handle }}" class="product{% cycle 'featured': '', '', '', ' last' %}">
+<div id="product-loop-{{ product.handle }}" class="product{% cycle 'featured': ' one', ' two', ' last' %}">
   <div class="image">
     <a href="/collections/{{ product-loop }}{{ product.url }}"><img src="{{ product.featured_image | product_img_url: 'large' }}" alt="{{ product.title | escape  }}" /></a>
   </div>
-  <div class="details clearfix">
-    <a href="/collections/{{ product-loop }}{{ product.url }}">
-      <span class="title">{{ product.title }}</span>
-    </a>
-  </div>
+  <div class="details-under clearfix">
+      <a href="/collections/{{ product-loop}}{{product.url}}">
+          <div class="title">{{product.title}} {{product.options}} </div>
+          <div class="product-price">{{product.price | money}}</div>
+        </a>
+        </div>
 </div>
-{% endif %}
-{% cycle 'clear-table': '', '', '', '<div style="clear:both;"></div>' %}
+
+{% cycle 'clear-table': '', '', '<div style="clear:both;"></div>' %}

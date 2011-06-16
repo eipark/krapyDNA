@@ -7,7 +7,7 @@ b, i,
 dl, dt, dd, ol, ul, li,
 fieldset, form, label, legend,
 table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, figcaption, figure, 
+article, aside, canvas, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section, summary,
 time, mark, audio, video {margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent;}
 article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {display:block;}
@@ -57,45 +57,46 @@ em {font-style:italic;}
 
 /* common classes */
 .wrapper {width:960px; margin:0 auto;}
-.l { text-align: left; } 
-.r { text-align: right; } 
+.l { text-align: left; }
+.r { text-align: right; }
 .c { text-align: center;}
-.fl { float: left; } 
+.fl { float: left; }
 .fr { float: right; }
 .fn { float:none; }
-.cl { clear: left; } 
-.cr { clear: right; } 
+.cl { clear: left; }
+.cr { clear: right; }
 .cb { clear: both; }
 
 
-/* Spacing */ 
-.st { margin-top: 10px; } 
-.sr { margin-right: 10px; } 
+/* Spacing */
+.st { margin-top: 10px; }
+.sr { margin-right: 10px; }
 .sb { margin-bottom: 10px; }
-.sl { margin-left: 10px; } 
-.sst { margin-top: 20px; } 
-.ssr { margin-right: 20px; } 
+.sl { margin-left: 10px; }
+.sst { margin-top: 20px; }
+.ssr { margin-right: 20px; }
 .ssb { margin-bottom: 20px; }
 .ssl { margin-left: 20px; }
 
 /* Padding */
-.pt { padding-top: 10px; } 
-.pr { padding-right: 10px; } 
+.pt { padding-top: 10px; }
+.pr { padding-right: 10px; }
 .pb { padding-bottom: 10px; }
-.pl { padding-left: 10px; } 
-.ppt { padding-top: 20px; } 
-.ppr { padding-right: 20px; } 
+.pl { padding-left: 10px; }
+.ppt { padding-top: 20px; }
+.ppr { padding-right: 20px; }
 .ppb { padding-bottom: 20px; }
 .ppl { padding-left: 20px; }
 
 /* clearfix */
 .clearfix:before, .clearfix:after {content: "\0020"; display: block; height: 0; visibility: hidden;}
 .clearfix:after {clear: both;}
+.clear{clear:both;}
 .clearfix {zoom: 1;}
 
-form { padding: 0; margin: 0;} 
-input { padding: 0; margin: 0;} 
-address { font-style: normal; } 
+form { padding: 0; margin: 0;}
+input { padding: 0; margin: 0;}
+address { font-style: normal; }
 option { padding-right: 5px; }
 
 /* basic styling */
@@ -118,7 +119,7 @@ nav li a {margin:0; display:block;}
  * Simple and fancy lightbox alternative
  *
  * Examples and documentation at: http://fancybox.net
- * 
+ *
  * Copyright (c) 2008 - 2010 Janis Skarnelis
  *
  * Version: 1.3.1 (05/03/2010)

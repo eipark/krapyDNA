@@ -51,7 +51,7 @@
   {% if settings.cufon_font == "Raleway" %}{{ 'Raleway.font.js' | asset_url | script_tag }}{% endif %}
   {% if settings.cufon_font == "StMarie" %}{{ 'StMarie.font.js' | asset_url | script_tag }}{% endif %}
 
-  <script type="text/javascript"> 
+  <script type="text/javascript">
   Cufon.replace('h1,h2,h3,h4,h5,h6', {hover: true});
   Cufon.replace('a.cufon, a .cufon, .cufon a', {hover: true});
   </script>
@@ -122,7 +122,7 @@
             {% if template == "search" and search.performed and search.terms != "" %}
             <input type="text" name="q" class="replace" value="{{ search.terms }}" />
             {% else %}
-            <input type="text" class="replace" name="q" value="Search..." />
+            <input type="text" class="replace" name="q" value="Search {{shop.name}}" />
             {% endif %}
           </form>
         </li>
@@ -135,53 +135,24 @@
 
     <footer class="clearfix">
       {% if settings.footer_linklist_1.title != "" and linklists[settings.footer_linklist_1].links.size > 0 %}
+	<div class="row">
       <nav>
-        <div class="more-info clearfix">
-          <span class="upper">{{ linklists[settings.footer_linklist_1].title }}</span>
-        </div>
         <ul>
           {% for link in linklists[settings.footer_linklist_1].links %}
           <li><a href="{{ link.url }}"{% if link.url == active_url %} class="current"{% endif %}{% if template == 'article' and link.url == blog.url %} class="current"{% endif %}>{{ link.title }}</a></li>
           {% endfor %}
         </ul>
       </nav>
+	<div id="social-buttons">
+		<a href="http://twitter.com"><img class="social-button" src="{{'facebook.png' | asset_url}}"></a>
+		<a href="http://facebook.com"><img class="social-button" src="{{'twitter.png' | asset_url}}"></a>
+	</div>
+	<div class="clear"></div>
+</div>
       {% endif %}
-      {% if settings.footer_linklist_2.title != "" and linklists[settings.footer_linklist_2].links.size > 0 %}
-      <nav>
-        <div class="more-info clearfix">
-          <span class="upper">{{ linklists[settings.footer_linklist_2].title }}</span>
-        </div>
-        <ul>
-          {% for link in linklists[settings.footer_linklist_2].links %}
-          <li><a href="{{ link.url }}"{% if link.url == active_url %} class="current"{% endif %}{% if template == 'article' and link.url == blog.url %} class="current"{% endif %}>{{ link.title }}</a></li>
-          {% endfor %}
-        </ul>
-      </nav>
-      {% endif %}
-      {% if settings.footer_linklist_3.title != "" and linklists[settings.footer_linklist_3].links.size > 0 %}
-      <nav>
-        <div class="more-info clearfix">
-          <span class="upper">{{ linklists[settings.footer_linklist_3].title }}</span>
-        </div>
-        <ul>
-          {% for link in linklists[settings.footer_linklist_3].links %}
-          <li><a href="{{ link.url }}"{% if link.url == active_url %} class="current"{% endif %}{% if template == 'article' and link.url == blog.url %} class="current"{% endif %}>{{ link.title }}</a></li>
-          {% endfor %}
-        </ul>
-      </nav>
-      {% endif %}
-      {% if settings.footer_linklist_4.title != "" and linklists[settings.footer_linklist_4].links.size > 0 %}
-      <nav class="last">
-        <div class="more-info clearfix">
-          <span class="upper">{{ linklists[settings.footer_linklist_4].title }}</span>
-        </div>
-        <ul>
-          {% for link in linklists[settings.footer_linklist_4].links %}
-          <li><a href="{{ link.url }}"{% if link.url == active_url %} class="current"{% endif %}{% if template == 'article' and link.url == blog.url %} class="current"{% endif %}>{{ link.title }}</a></li>
-          {% endfor %}
-        </ul>
-      </nav>
-      {% endif %}
+	<div id="copyright-info">
+		&copy; 2011 krapyDNA
+	</div>
     </footer>
   </div> <!-- /.wrapper -->
 </body>
