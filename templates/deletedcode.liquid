@@ -1,0 +1,79 @@
+{% if settings.collection_tags %}
+<div class="more-info clearfix">
+  <span class="upper">Browse</span>
+  <span class="lower">This Collection</span>
+</div>
+
+<ul class="tags clearfix">
+  <li{% unless current_tags %} class="active"{% endunless %}><a href="/collections/{{ collection.handle }}">All</a>
+  {% for tag in collection.all_tags %}
+  {% if current_tags contains tag %}
+  <li class="active">{{ tag | link_to_remove_tag: tag }}</li>
+  {% else %}
+  <li>{{ tag | link_to_tag: tag }}</li>
+  {% endif %}
+  {% endfor %}
+</ul>
+{% endif %}
+
+
+
+<div class="details"><span class="type">type: {{ product.type | link_to_type }}</span> <span class="vendor">by: {{ product.vendor | link_to_vendor }}</span></div>
+
+
+
+<div class="more-info clearfix">
+  <div class="fr">
+    <span class="upper">&nbsp;</span>
+    <span class="lower">{% include 'pagination' %}</span>
+  </div>
+</div>
+
+
+
+{% if collection %}
+<div class="more-info clearfix">
+  {% if collection.previous_product %}
+  <div class="fl">
+    <a href="{{ collection.previous_product }}" class="previous_product"><span class="upper">Previous</span> <span class="lower">Product</span></a>
+  </div>
+  {% endif %}
+  {% if collection.next_product %}
+  <div class="fr">
+    <a href="{{ collection.next_product }}" class="next_product"><span class="upper">Next</span> <span class="lower">Product</span></a>
+  </div>
+  {% endif %}
+</div>
+{% endif %}
+
+
+
+{% capture collection_handle %}{{ product-loop | handleize }}{% endcapture %}
+
+
+<div class="slider-container">
+  {% if settings.homepage_banner == "slider" %}
+  <div id="content-scroll" class="scroll">
+    <div id="content-slide">
+      {% for product in collections[settings.slider_collection].products %}
+      {% include 'product-slide' with settings.slider_collection %}
+      {% endfor %}
+    </div><!-- /#latest-products -->
+  </div>
+  <div class="slider">
+    <span class="ui-slider-handle">&nbsp;</span>
+  </div>
+  {% else %}
+  <ul id="slider">
+    <li class="slide"><img src="{{ 'slideshow_1.jpg' | asset_url }}" data-url="{{ settings.image_1_link }}" class="slide-img" /></li>
+    <li class="slide"><img src="{{ 'slideshow_2.jpg' | asset_url }}" data-url="{{ settings.image_2_link }}" class="slide-img" /></li>
+    <li class="slide"><img src="{{ 'slideshow_3.jpg' | asset_url }}" data-url="{{ settings.image_3_link }}" class="slide-img" /></li>
+    <li class="slide"><img src="{{ 'slideshow_4.jpg' | asset_url }}" data-url="{{ settings.image_4_link }}" class="slide-img" /></li>
+    <li class="slide"><img src="{{ 'slideshow_5.jpg' | asset_url }}" data-url="{{ settings.image_5_link }}" class="slide-img" /></li>
+  </ul>
+  <div id="slider-empty" style="display:none; padding:120px 0; text-align:center;">
+    <h4>Slider is empty</h4>
+    If you are the shop owner, <a href="/admin/themes/current/settings">click here</a> to upload images to this slideshow.
+  </div>
+  {% endif %}
+</div>
