@@ -2,10 +2,12 @@
   {% paginate blog.articles by settings.pagination_limit %}
   <div class="articles clearfix">
     <div class="main">
-
+<!--
       <div class="more-info clearfix">
         <span class="upper">{{ blog.title }}</span>
-        <span class="lower">{{ blog.articles_count }} {{ blog.articles_count | pluralize: 'Article', 'Articles' }}</span>
+      </div>-->
+      <div class="details clearfix">
+        <h2 class="title georgia">Blog</h2>
       </div>
 
       {% for article in blog.articles %}

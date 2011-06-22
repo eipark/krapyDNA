@@ -25,7 +25,7 @@
   <div class="more-info clearfix">
     <div class="fl">
       <span class="upper">{{ collection.title }}</span>
-      <span class="lower">{{ collection.all_products_count }} {{ collection.all_products_count | pluralize: 'Item', 'Items' }} total</span>
+      <div id="collection-description">{{ collection.description }}</div>
     </div>
     <div class="fr">
       <span class="upper">&nbsp;</span>

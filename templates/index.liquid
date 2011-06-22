@@ -8,7 +8,6 @@
   {% if settings.frontpage_collection != "" %}
   <div class="more-info">
     <span class="upper">Featured</span>
-    <span class="lower">{% if collections[settings.frontpage_collection].all_products_count < 8 %}{{ collections[settings.frontpage_collection].all_products_count }}{% else %}8{% endif %} {{ collections[settings.frontpage_collection].all_products_count | pluralize: 'Item', 'Items' }}</span>
   </div>
 
   <div id="content-table" class="clearfix">
