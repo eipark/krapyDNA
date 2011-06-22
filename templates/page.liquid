@@ -1,13 +1,15 @@
 <div id="page" class="clearfix">
   <div class="main">
     <div class="details clearfix">
-      <h2 class="title georgia">{{ page.title }}</h2>
+      <h2 class="title">{{ page.title }}</h2>
     </div>
     <div class="content">
       {{ page.content }}
     </div>
   </div> <!-- /.main -->
-  <!-- {% include "sidebar" %} -->
+  {% if page.title == 'FAQ' or page.title == 'Contact' %}
+    {% include 'picture_sidebar' %}
+  {% endif %}
 </div> <!-- /#page -->
 <!--
 {% include 'featured-products' %}

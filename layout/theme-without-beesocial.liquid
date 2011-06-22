@@ -10,8 +10,6 @@
 
   <title>{{ shop.name }} - {{ page_title | escape }}</title>
 
-  <link rel="shortcut icon" href="{{ 'favicon_maroon.png' | asset_url }}" />
-
   {{ content_for_header }}
 
   <meta name="description" content="">
@@ -42,7 +40,6 @@
   {{ 'jquery.slider.js' | asset_url | script_tag }}
   {{ 'cloud-zoom.js' | asset_url | script_tag }}
   {{ 'shop.js' | asset_url | script_tag }}
-  {{ 'mailchimp.js' | asset_url | script_tag }}
 
   {% if settings.typeface_method == "cufon" %}
 
@@ -63,16 +60,13 @@
   {% if settings.typeface_method == "google_webfonts" %}
   <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family={{ settings.google_webfont_font }}">
   {% endif %}
-  <link href='http://fonts.googleapis.com/css?family=Permanent+Marker&v1' rel='stylesheet' type='text/css'>
-  <link href='http://fonts.googleapis.com/css?family=Arvo:regular,bold&v1' rel='stylesheet' type='text/css'>
-
-
 
   <script type="text/javascript">
   Shopify.money_format = '{{ shop.money_format }}';
   </script>
 
   {% capture active_url %}{% if template == "index" %}/{% elsif template == "collection" %}/collections/{{ collection.handle }}{% elsif template == "product" %}{% if collection %}/collections/{{ collection.handle }}{% endif %}/products/{{ product.handle }}{% elsif template == "page" %}/pages/{{ page.handle }}{% elsif template == "blog" %}/blogs/{{ blog.handle }}{% elsif template == "cart" %}/cart{% elsif template == "search" %}/search{% endif %}{% endcapture %}
+{{ '//www.beetailer.com/javascripts/beecart.js'| script_tag }}
 </head>
 
 <body>
@@ -91,9 +85,6 @@
         <div id="cart-updated"><a href="/cart">Added to cart</a></div>
       </div> <!-- /.cart-summary -->
       <p class="contact-info">
-        <span id="free-shipping" class="marker-font">
-          <a href="/pages/faq#shipping">Free Domestic Shipping!</a>
-        </span>
         {% if shop.customer_accounts_enabled %}
         <span class="customer">
           {% if customer %}
@@ -110,7 +101,6 @@
         <span class="email"><a href="mailto:{{ settings.contact_email }}">{{ settings.contact_email }}</a></span>
         {% endif %}
       </p>
-
     </header>
 
     <nav class="main">
@@ -133,7 +123,7 @@
             {% if template == "search" and search.performed and search.terms != "" %}
             <input type="text" name="q" class="replace" value="{{ search.terms }}" />
             {% else %}
-            <input type="text" class="replace" name="q" value="Search {{shop.name}}" />
+            <input type="text" class="replace" name="q" value="Search..." />
             {% endif %}
           </form>
         </li>
@@ -146,7 +136,6 @@
 
     <footer class="clearfix">
       {% if settings.footer_linklist_1.title != "" and linklists[settings.footer_linklist_1].links.size > 0 %}
-	<div class="row">
       <nav>
         <ul>
           {% for link in linklists[settings.footer_linklist_1].links %}
@@ -154,32 +143,10 @@
           {% endfor %}
         </ul>
       </nav>
-	<div id="social-buttons">
-		<a href="http://twitter.com"><img class="social-button" src="{{'facebook.png' | asset_url}}"></a>
-		<a href="http://facebook.com"><img class="social-button" src="{{'twitter.png' | asset_url}}"></a>
-	</div>
-	<div class="clear"></div>
-</div>
       {% endif %}
 	<div id="copyright-info">
 		&copy; 2011 krapyDNA
 	</div>
-
-	<div id="mc_embed_signup">
-  <form action="http://krapyDNA.us2.list-manage.com/subscribe/post?u=df6104009860b5bdf5e62cf87&amp;id=7d3239b744" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank">
-	<div class="mc-field-group">
-    <label for="mce-EMAIL">krapyDNA Newsletter:</label>
-    <input type="text" value="Email Address" name="EMAIL" class="required email" id="mce-EMAIL">
-    <input type="submit" value="Subscribe!" name="subscribe" id="mc-embedded-subscribe" class="btn">
-  </div>
-  		<div id="mce-responses">
-  			<div class="response" id="mce-error-response" style="display:none"></div>
-  			<div class="response" id="mce-success-response" style="display:none"></div>
-  		</div>
-
-  	</fieldset>
-  </form>
-  </div>
     </footer>
   </div> <!-- /.wrapper -->
 </body>

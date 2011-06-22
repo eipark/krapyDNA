@@ -22,6 +22,7 @@
   {% else %}
   {% paginate collection.products by settings.pagination_limit %}
 
+<!--
   <div class="more-info clearfix">
     <div class="fl">
       <span class="upper">{{ collection.title }}</span>
@@ -32,6 +33,11 @@
       <span class="lower">{% include 'pagination' %}</span>
     </div>
   </div>
+  -->
+  <div id="collection-banner" class="image-banner">
+    <span id="collection-title">{{collection.title}}</span>
+  </div>
+
 
   <div id="content-table" class="clearfix">
     {% for product in collection.products %}

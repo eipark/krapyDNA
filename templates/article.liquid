@@ -3,7 +3,7 @@
     <div class="article-body clearfix">
       <div class="more-info">
         <span class="upper">{{ article.created_at | date: "%B %d %Y" }}</span>
-        <span class="lower">{{ article.created_at | date: "%A at %I:%M %p" }}</span>
+        <span class="lower">{{ article.created_at | date: "%A at %I:%M %p" }} by {{article.author}}</span>
       </div>
       <h2>{{ article.title }}</h2>
       <div class="content">
