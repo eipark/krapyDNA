@@ -14,7 +14,14 @@
 
   {{ content_for_header }}
 
-  <meta name="description" content="">
+  <meta property="og:title" content="Testing the like" />
+  <meta property="og:type" content="product" />
+  <meta property="og:url" content="" />
+  <meta property="og:image" content="" />
+  <meta property="og:site_name" content="krapyDNA" />
+  <meta property="fb:admins" content="1342020184" />
+
+  <meta name="description" content="krapyDNA is a line of apparel under the theme of Ordinary People, Extraordinary Impact.">
   <meta name="author" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -57,9 +64,10 @@
   <script type="text/javascript">
   Cufon.replace('h1,h2,h3,h4,h5,h6', {hover: true});
   Cufon.replace('a.cufon, a .cufon, .cufon a', {hover: true});
+
   </script>
   {% endif %}
-
+  <script type="text/javascript" src="https://apis.google.com/js/plusone.js"></script>
   {% if settings.typeface_method == "google_webfonts" %}
   <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family={{ settings.google_webfont_font }}">
   {% endif %}
@@ -86,31 +94,49 @@
         <h1><a href="/">{{ shop.name }}</a></h1>
         {% endif %}
       </div> <!-- /.logo -->
-      <div class="cart-summary">
-        <span class="cart"><a href="/cart"><span class="cart-total-items"><span class="count">{{ cart.item_count }}</span> {{ cart.item_count | pluralize: 'Item', 'Items' }} (<span class="total_price">{{ cart.total_price | money }}</span>)</span></a></span>
-        <div id="cart-updated"><a href="/cart">Added to cart</a></div>
-      </div> <!-- /.cart-summary -->
-      <p class="contact-info">
-        <span id="free-shipping" class="marker-font">
-          <a href="/pages/faq#shipping">Free Domestic Shipping!</a>
-        </span>
-        {% if shop.customer_accounts_enabled %}
-        <span class="customer">
-          {% if customer %}
-          Welcome <a href="/account">{{ customer.first_name }}</a> | {{ 'Logout' | customer_logout_link }}
-          {% else %}
-          {{ 'Customer Login' | customer_login_link }}
-          {% endif %}
-        </span>
-        {% endif %}
-        {% if settings.contact_phone != "" %}
-        <span class="tel">{{ settings.contact_phone }}</span>
-        {% endif %}
-        {% if settings.contact_email != "" %}
-        <span class="email"><a href="mailto:{{ settings.contact_email }}">{{ settings.contact_email }}</a></span>
-        {% endif %}
-      </p>
 
+      <div id="top-right-box">
+        <p class="contact-info">
+          <span id="free-shipping" class="marker-font">
+            <a href="/pages/faq#shipping">Free Domestic Shipping!</a>
+          </span>
+          {% if shop.customer_accounts_enabled %}
+          <span class="customer">
+            {% if customer %}
+            Welcome <a href="/account">{{ customer.first_name }}</a> | {{ 'Logout' | customer_logout_link }}
+            {% else %}
+            {{ 'Customer Login' | customer_login_link }}
+            {% endif %}
+          </span>
+          {% endif %}
+          {% if settings.contact_phone != "" %}
+          <span class="tel">{{ settings.contact_phone }}</span>
+          {% endif %}
+          {% if settings.contact_email != "" %}
+          <span class="email"><a href="mailto:{{ settings.contact_email }}">{{ settings.contact_email }}</a></span>
+          {% endif %}
+        </p>
+
+
+
+
+        <div id="mc_embed_signup" class="clearfix">
+        <form action="http://krapyDNA.us2.list-manage.com/subscribe/post?u=df6104009860b5bdf5e62cf87&amp;id=7d3239b744" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank">
+      	<div class="mc-field-group">
+          <label for="mce-EMAIL">Newsletter:</label>
+          <input type="text" value="Email Address" name="EMAIL" class="required email" id="mce-EMAIL">
+          <input type="submit" value="Sign up" name="subscribe" id="mc-embedded-subscribe" class="btn">
+        </div>
+        		<div id="mce-responses">
+        			<div class="response" id="mce-error-response" style="display:none"></div>
+        			<div class="response" id="mce-success-response" style="display:none"></div>
+        		</div>
+
+        	</fieldset>
+        </form>
+        </div>
+
+      </div>
     </header>
 
     <nav class="main">
@@ -128,16 +154,12 @@
         </li>
         {% endif %}
         {% endfor %}
-        <li class="fr cy">
-          <form id="search_form" class="searchform" name="search" action="/search">
-            {% if template == "search" and search.performed and search.terms != "" %}
-            <input type="text" name="q" class="replace" value="{{ search.terms }}" />
-            {% else %}
-            <input type="text" class="replace" name="q" value="Search {{shop.name}}" />
-            {% endif %}
-          </form>
-        </li>
+        <div class="cart-summary clearfix">
+          <span class="cart"><a href="/cart"><span class="cart-total-items"><span class="count">{{ cart.item_count }}</span> {{ cart.item_count | pluralize: 'Item', 'Items' }} (<span class="total_price">{{ cart.total_price | money }}</span>)</span></a></span>
+          <div id="cart-updated"><a href="/cart">Added to cart</a></div>
+        </div> <!-- /.cart-summary -->
       </ul>
+
     </nav>
 
     <section id="body" class="clearfix">
@@ -157,6 +179,7 @@
 	<div id="social-buttons">
 		<a href="http://twitter.com"><img class="social-button" src="{{'facebook.png' | asset_url}}"></a>
 		<a href="http://facebook.com"><img class="social-button" src="{{'twitter.png' | asset_url}}"></a>
+		<div id="fb-root"></div><script src="http://connect.facebook.net/en_US/all.js#appId=113713508719087&amp;xfbml=1"></script><fb:like href="http://www.krapydna.com" send="false" layout="button_count" width="450" show_faces="false" font=""></fb:like>
 	</div>
 	<div class="clear"></div>
 </div>
@@ -164,22 +187,6 @@
 	<div id="copyright-info">
 		&copy; 2011 krapyDNA
 	</div>
-
-	<div id="mc_embed_signup">
-  <form action="http://krapyDNA.us2.list-manage.com/subscribe/post?u=df6104009860b5bdf5e62cf87&amp;id=7d3239b744" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank">
-	<div class="mc-field-group">
-    <label for="mce-EMAIL">krapyDNA Newsletter:</label>
-    <input type="text" value="Email Address" name="EMAIL" class="required email" id="mce-EMAIL">
-    <input type="submit" value="Subscribe!" name="subscribe" id="mc-embedded-subscribe" class="btn">
-  </div>
-  		<div id="mce-responses">
-  			<div class="response" id="mce-error-response" style="display:none"></div>
-  			<div class="response" id="mce-success-response" style="display:none"></div>
-  		</div>
-
-  	</fieldset>
-  </form>
-  </div>
     </footer>
   </div> <!-- /.wrapper -->
 </body>

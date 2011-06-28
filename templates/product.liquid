@@ -21,7 +21,14 @@
     </div> <!-- /.images -->
 
     <div class="content">
-      <h2 class="title">{{ product.title }}</h2>
+      <div class="product-title">{{ product.title }}</div>
+      <div class="product-page-price">
+      {% if product.price_min < product.compare_at_price_min %}
+      {{ product.price_min | money }} <span>was {{ product.compare_at_price_min | money }}</span>
+      {% else %}
+      {{ product.price_min | money }}
+      {% endif %}
+      </div>
 
       {% if settings.product_description_position == "top" %}
       <div class="description">
@@ -55,11 +62,7 @@
         </div>
         {% endif %}
 
-        {% if product.price_min < product.compare_at_price_min %}
-        <p class="price" id="price-preview">{{ product.price_min | money }} <span>was {{ product.compare_at_price_min | money }}</span></p>
-        {% else %}
-        <p class="price" id="price-preview">{{ product.price_min | money }}</p>
-        {% endif %}
+
 
         <div class="purchase clearfix">
           {% if product.variants.first.available == true && product.variants.size == 1 %}
@@ -73,18 +76,28 @@
       {% if settings.product_description_position == "bottom" %}
       <div class="description">
         {{ product.description }}
-      </div><!--
+      </div>
+      <!--
       <div class="details"><span class="type">type: {{ product.type | link_to_type }}</span> <span class="vendor">by: {{ product.vendor | link_to_vendor }}</span></div>-->
       {% endif %}
+
+      <div id="product-social">
+
+        <a href="http://twitter.com/share" class="twitter-share-button" data-text="I'm checking out '{{product.title}}' from krapyDNA -" data-count="horizontal" data-via="krapyDNAapparel">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
+        <span id="fb-root"></span><script src="http://connect.facebook.net/en_US/all.js#appId=176921545702168&amp;xfbml=1"></script><fb:like href="http://krapydna.com{{product.url}}" send="true" layout="button_count" show_faces="false" font="lucida grande"></fb:like>
+        <g:plusone size="medium"></g:plusone>
+      </div>
+
     </div>
   </div> <!-- /.product_body -->
 
+  <!--
   {% if collection and collection.products.size > 1 %}
 
   <div class="more-info">
-    <span class="upper">More Products</span>
-    <span class="lower">From This Collection</span>
+    More from this collection
   </div>
+
 
   <div class="slider-container">
     <div id="content-scroll" class="scroll">
@@ -92,14 +105,15 @@
         {% for product in collection.products %}
         {% include 'product-slide-small' %}
         {% endfor %}
-      </div><!-- /#latest-products -->
+      </div>
     </div>
     <div class="slider">
       <span class="ui-slider-handle">&nbsp;</span>
     </div>
   </div>
+
   {% endif %}
-<!--
+
   <div id="recently-viewed" style="display:none;">
 
     <div class="more-info">
@@ -110,9 +124,9 @@
     <div id="content-table" class="products clearfix">
 
     </div>
-  </div>--> <!-- /#recently-viewed -->
+  </div>-->
 
-</div> <!-- /#product -->
+</div>
 <script type="text/javascript">
 // <![CDATA[
 var selectCallback = function(variant, selector) {

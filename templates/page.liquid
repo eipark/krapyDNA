@@ -1,16 +1,15 @@
 <div id="page" class="clearfix">
+  {% if page.title == 'FAQ' or page.title == 'Contact Us' or page.title == 'Terms & Conditions' or page.title == 'Privacy Policy'%}
   <div class="main">
-    <div class="details clearfix">
-      <h2 class="title">{{ page.title }}</h2>
-    </div>
+  {% else %}
+  <div>
+  {% endif %}
+    <div class="page-title">{{ page.title }}</div>
     <div class="content">
       {{ page.content }}
     </div>
   </div> <!-- /.main -->
-  {% if page.title == 'FAQ' or page.title == 'Contact' %}
+  {% if page.title == 'FAQ' or page.title == 'Contact Us' or page.title == 'Terms & Conditions' or page.title == 'Privacy Policy'%}
     {% include 'picture_sidebar' %}
   {% endif %}
 </div> <!-- /#page -->
-<!--
-{% include 'featured-products' %}
--->

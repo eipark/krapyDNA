@@ -2,19 +2,14 @@
   {% paginate blog.articles by settings.pagination_limit %}
   <div class="articles clearfix">
     <div class="main">
-<!--
-      <div class="more-info clearfix">
-        <span class="upper">{{ blog.title }}</span>
-      </div>-->
-      <div class="details clearfix">
-        <h2 class="title georgia">Blog</h2>
-      </div>
-
+      <div class="page-title">{{ blog.title }}</div>
       {% for article in blog.articles %}
       <div class="article clearfix">
         <div class="content">
-          <h4><a href="{{ article.url }}">{{ article.title }}</a></h4>
-          {{ article.content | strip_html | truncatewords:70 }}
+          <div class="blog-title"><a href="{{ article.url }}">{{ article.title }}</a></div>
+          <div class="blog-meta">{{article.author}} - {{ article.created_at | date: "%m.%d.%y" }}</div>
+          {{ article.content | strip_html | truncatewords:40 }}
+
         </div>
       </div> <!-- /.article -->
       {% endfor %}
