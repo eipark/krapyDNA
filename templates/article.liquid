@@ -14,63 +14,35 @@
 
   <div class="article-body clearfix clear">
     <div class="blog-title">{{ article.title }}</div>
-    <div class="blog-meta">{{article.author}} {{ article.created_at | date: "%m.%d.%y" }}</div>
+    <div class="blog-meta">{{article.author}} | {{ article.created_at | date: "%m.%d.%y" }} | <a href="{{ article.url }}#disqus_thread" data-disqus-identifier="{{article.id}}"></a></div>
     <div class="content">
       {{ article.content }}
     </div>
   </div> <!-- /.article-body -->
 
+
+
+
   {% if blog.comments_enabled? %}
+  <div id="disqus_thread"></div>
+  <script type="text/javascript">
+      var disqus_shortname = 'krapyDNA'; // required: replace example with your forum shortname
+
+      // The following are highly recommended additional parameters. Remove the slashes in front to use.
+      var disqus_identifier = '{{article.id}}';
+      // var disqus_url = 'http://example.com/permalink-to-page.html';
+
+      /* * * DON'T EDIT BELOW THIS LINE * * */
+      (function() {
+          var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+          dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  <a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
 
 
-    <div id="comments" class="comments">
-      <div class="comment_form">
-        {% form article %}
-        <span class="comment-label">Comments</span>
-        {% if form.posted_successfully? %}
-        {% if blog.moderated? %}
-        <div class="notice success">
-          Thanks! Your comment will be posted upon approval.
-        </div>
-        {% else %}
-        <div class="notice success">Successfully posted your comment.</div>
-        {% endif %}
-        {% endif %}
-
-        {% if form.errors %}
-        <div class="notice error">Not all the fields have been filled out correctly</div>
-        {% endif %}
-
-        <input type="text" id="comment_author" name="comment[author]" size="40" value="Your name" class="replace"{% if form.errors contains 'author' %} class="input-error"{% endif %} />
-        <input type="text" id="comment_email" name="comment[email]" size="40" value="Your email" class="replace"{% if form.errors contains 'email' %} class="input-error"{% endif %} />
-        <textarea id="comment_body" name="comment[body]" cols="40" rows="5" class="replace"{% if form.errors contains 'body' %} class="input-error"{% endif %}>{{form.body}}</textarea>
-
-        <input type="submit" value="Post comment" id="comment-submit" />
-
-        {% if blog.moderated? %}
-        {% endif %}
-        {% endform %}
-      </div>
-
-        {% if article.comments.size > 0 %}
-        {% for comment in article.comments %}
-        <div id="comment-{{ comment.id }}" class="comment clearfix">
-          <div class="clearfix">
-            <div class="author">
-              {{ comment.author }} <span class="comment-datetime"> {{ comment.created_at | date: "%m.%d.%y - %I:%M%p" }}</span>
-            </div>
-            <div class="gravatar">
-              <span class="email" style="display:none;">{{ comment.email }}</span>
-              <img src="" class="gravatar" alt="{{ comment.author }}" />
-            </div>
-          </div>
-          <div class="content">
-            {{ comment.content }}
-          </div>
-        </div> <!-- /.comment -->
-        {% endfor %}
-        {% endif %}
-    </div> <!-- div.comments -->
 
   {% endif %}
 </div> <!-- /#article -->

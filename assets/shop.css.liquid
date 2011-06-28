@@ -65,6 +65,7 @@ div.cart-summary span.cart a {display:block; float:right; height:26px; margin-to
 header .logo a, header .logo a img {display:block; margin:0; padding:0; width: 500px;}
 footer.row {width: 100%;}
 header #top-right-box { position: absolute; width: 480px; top:3px; left: 50%;}
+#free-shipping {float:right;}
 #free-shipping a {color: green; font-size: 16px;}
 #free-shipping a:hover{text-decoration: underline;}
 
@@ -300,19 +301,20 @@ footer #social-buttons{float:right;}
 /* page */
 
 /* blogs and articles */
-#blog .article {padding:24px 0;}
+#blog .article {padding:35px 0;}
 #blog .articles .article:last-child {border-bottom:none;}
 #blog .article .content p, #article .content p {margin-bottom:20px;}
-#blog .blog-title, #article .blog-title{font-size: 20px; margin-bottom: -2px;}
-#blog .blog-meta, #article .blog-meta {font-size: 12px; color: #999;}
+.article-body .content{margin-bottom: 20px; padding-bottom: 20px;}
+#blog .blog-title, #article .blog-title{font-size: 20px; margin-bottom: 0;}
+#blog .blog-meta, #article .blog-meta {font-size: 12px; color: #999; margin-bottom: 10px;}
 #article .date, #article .back {font-size:11px; color:#c0c0c0;}
 #article .comments .comment {padding:0 0 10px 0; margin-bottom:5px;}
 #article .comments .comment .author {float:left; height:25px; line-height:25px; font-size:13px; color:#000;}
 #article .comments .comment .gravatar {float:right; display:none;}
 #article .comment_form input[type=text], #article .comment_form textarea {display:block; margin-bottom:10px; width:100%; border:1px solid #D9D9D9; padding:3px;}
-.comment-form {width: 50%;}
-.article-body {width:100%;}
-.previous-next-article {width:100%;}
+.comment-form {width: 50%; margin-bottom: 20px; }
+.article-body {width:100%; margin: 15px 0; border-bottom: 1px dotted #cacaca;}
+.previous-next-article {width:100%; margin-bottom: 10px;}
 .previous-article {float:left; margin-bottom: 15px;}
 .next-article {float:right;margin-bottom: 15px;}
 
@@ -375,7 +377,18 @@ nav.main {border-top:1px dotted #262626;}
 .question {font-weight: bold; color: #000;}
 
 /* mailchimp newsletter */
+#newsletter-box{
+  display:none;
+  position:fixed;
+  margin: 200px auto;
+  width: 400px;
+  height: 300px;
+  border-radius: 5px;
+  border: 3px solid #555;
+  z-index: 100;
+  background: #fff;
 
+}
 #mc-field-group{
 }
 

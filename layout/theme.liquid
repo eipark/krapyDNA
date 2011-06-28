@@ -50,6 +50,8 @@
   {{ 'cloud-zoom.js' | asset_url | script_tag }}
   {{ 'shop.js' | asset_url | script_tag }}
   {{ 'mailchimp.js' | asset_url | script_tag }}
+  {{ 'krapy.js' | asset_url | script_tag }}
+
 
   {% if settings.typeface_method == "cufon" %}
 
@@ -97,9 +99,7 @@
 
       <div id="top-right-box">
         <p class="contact-info">
-          <span id="free-shipping" class="marker-font">
-            <a href="/pages/faq#shipping">Free Domestic Shipping!</a>
-          </span>
+          <a id="newsletter-link" href="javascript:void(0)">Newsletter Sign Up</a>
           {% if shop.customer_accounts_enabled %}
           <span class="customer">
             {% if customer %}
@@ -116,10 +116,13 @@
           <span class="email"><a href="mailto:{{ settings.contact_email }}">{{ settings.contact_email }}</a></span>
           {% endif %}
         </p>
+        <div id="free-shipping" class="marker-font">
+           <a href="/pages/faq#shipping">Free Domestic Shipping!</a>
+         </div>
 
 
-
-
+      </div>
+      <div id="newsletter-box">
         <div id="mc_embed_signup" class="clearfix">
         <form action="http://krapyDNA.us2.list-manage.com/subscribe/post?u=df6104009860b5bdf5e62cf87&amp;id=7d3239b744" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank">
       	<div class="mc-field-group">
@@ -135,8 +138,9 @@
         	</fieldset>
         </form>
         </div>
-
+        <a id="newsletter-close" href="javascript:void(0)">Close</a>
       </div>
+
     </header>
 
     <nav class="main">
@@ -177,11 +181,9 @@
         </ul>
       </nav>
 	<div id="social-buttons">
-		<a href="http://twitter.com"><img class="social-button" src="{{'facebook.png' | asset_url}}"></a>
-		<a href="http://facebook.com"><img class="social-button" src="{{'twitter.png' | asset_url}}"></a>
-		<div id="fb-root"></div><script src="http://connect.facebook.net/en_US/all.js#appId=113713508719087&amp;xfbml=1"></script><fb:like href="http://www.krapydna.com" send="false" layout="button_count" width="450" show_faces="false" font=""></fb:like>
-	</div>
-	<div class="clear"></div>
+		<a href="http://facebook.com"><img class="social-button" src="{{'facebook.png' | asset_url}}"></a>
+		<a href="http://twitter.com/krapydnaapparel"><img class="social-button" src="{{'twitter.png' | asset_url}}"></a>
+		<div class="clear"></div>
 </div>
       {% endif %}
 	<div id="copyright-info">
@@ -189,5 +191,19 @@
 	</div>
     </footer>
   </div> <!-- /.wrapper -->
+
+  {% if blog.title != "sadfaowiejfaddd" %}
+  <script type="text/javascript">
+      var disqus_shortname = 'krapydna';
+
+      /* * * DON'T EDIT BELOW THIS LINE * * */
+          (function () {
+              var s = document.createElement('script'); s.async = true;
+              s.type = 'text/javascript';
+              s.src = 'http://' + disqus_shortname + '.disqus.com/count.js';
+              (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+          }());
+      </script>
+  {% endif %}
 </body>
 </html>

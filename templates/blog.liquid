@@ -1,23 +1,22 @@
 <div id="blog" class="clearfix">
   {% paginate blog.articles by settings.pagination_limit %}
   <div class="articles clearfix">
-    <div class="main">
+    <div class="">
       <div class="page-title">{{ blog.title }}</div>
       {% for article in blog.articles %}
       <div class="article clearfix">
         <div class="content">
           <div class="blog-title"><a href="{{ article.url }}">{{ article.title }}</a></div>
-          <div class="blog-meta">{{article.author}} - {{ article.created_at | date: "%m.%d.%y" }}</div>
-          {{ article.content | strip_html | truncatewords:40 }}
+          <div class="blog-meta">{{article.author}} | {{ article.created_at | date: "%m.%d.%y" }} | <a href="{{ article.url }}#disqus_thread" data-disqus-identifier="{{article.id}}"></a></div>
+          {{ article.content | strip_html }}
 
         </div>
       </div> <!-- /.article -->
       {% endfor %}
     </div> <!-- /.main -->
-    {% include 'picture_sidebar' %}
   </div> <!-- /.articles -->
 
   {% include 'pagination' %}
   {% endpaginate %}
 </div> <!-- /#blog -->
-<!--{% include 'featured-products' %}-->
+
