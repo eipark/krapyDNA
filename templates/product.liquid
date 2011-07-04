@@ -62,8 +62,6 @@
         </div>
         {% endif %}
 
-
-
         <div class="purchase clearfix">
           {% if product.variants.first.available == true && product.variants.size == 1 %}
           <span><input type="submit" name="add" id="add-to-cart" value="Add to Cart" class="cart cufon" /></span>
@@ -80,15 +78,6 @@
       <!--
       <div class="details"><span class="type">type: {{ product.type | link_to_type }}</span> <span class="vendor">by: {{ product.vendor | link_to_vendor }}</span></div>-->
       {% endif %}
-
-      <div id="product-social">
-
-        <a href="http://twitter.com/share" class="twitter-share-button" data-text="I'm checking out '{{product.title}}' from krapyDNA -" data-count="horizontal" data-via="krapyDNAapparel">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
-        <span id="fb-root"></span><script src="http://connect.facebook.net/en_US/all.js#appId=176921545702168&amp;xfbml=1"></script><fb:like href="http://krapydna.com{{product.url}}" send="true" layout="button_count" show_faces="false" font="lucida grande"></fb:like>
-        <g:plusone size="medium"></g:plusone>
-      </div>
-
-    </div>
   </div> <!-- /.product_body -->
 
   <!--

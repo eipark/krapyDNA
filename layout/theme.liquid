@@ -14,10 +14,10 @@
 
   {{ content_for_header }}
 
-  <meta property="og:title" content="Testing the like" />
-  <meta property="og:type" content="product" />
-  <meta property="og:url" content="" />
-  <meta property="og:image" content="" />
+  <meta property="og:title" content="krapyDNA" />
+  <meta property="og:type" content="company" />
+  <meta property="og:url" content="http://www.krapyDNA.com" />
+  <meta property="og:image" content="http://cdn.shopify.com/s/files/1/0070/6762/t/1/assets/logo.png?103101" />
   <meta property="og:site_name" content="krapyDNA" />
   <meta property="fb:admins" content="1342020184" />
 
@@ -100,6 +100,7 @@
       <div id="top-right-box">
         <p class="contact-info">
           <a id="newsletter-link" href="javascript:void(0)">Newsletter Sign Up</a>
+
           {% if shop.customer_accounts_enabled %}
           <span class="customer">
             {% if customer %}
@@ -116,29 +117,29 @@
           <span class="email"><a href="mailto:{{ settings.contact_email }}">{{ settings.contact_email }}</a></span>
           {% endif %}
         </p>
-        <div id="free-shipping" class="marker-font">
-           <a href="/pages/faq#shipping">Free Domestic Shipping!</a>
-         </div>
-
-
+        <a href="/pages/faq#shipping" id="free-shipping">
+          Free Domestic Shipping!
+        </a>
       </div>
+
       <div id="newsletter-box">
         <div id="mc_embed_signup" class="clearfix">
         <form action="http://krapyDNA.us2.list-manage.com/subscribe/post?u=df6104009860b5bdf5e62cf87&amp;id=7d3239b744" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank">
-      	<div class="mc-field-group">
-          <label for="mce-EMAIL">Newsletter:</label>
-          <input type="text" value="Email Address" name="EMAIL" class="required email" id="mce-EMAIL">
-          <input type="submit" value="Sign up" name="subscribe" id="mc-embedded-subscribe" class="btn">
-        </div>
-        		<div id="mce-responses">
-        			<div class="response" id="mce-error-response" style="display:none"></div>
-        			<div class="response" id="mce-success-response" style="display:none"></div>
-        		</div>
+      	  <div id="newsletter-head">krapyDNA Newsletter</div>
+          <div id="newsletter-text">Sign up to receive product updates, coupons, and any other exciting news from krapyDNA! Your email will be kept confidential and you can
+            opt out at any time.</div>
+          <!-- <label for="mce-EMAIL"></label> -->
 
-        	</fieldset>
-        </form>
+          <input type="text" value="Email Address" name="EMAIL" class="required email" id="mce-EMAIL">
+        <input type="submit" value="Sign up" name="subscribe" id="mc-embedded-subscribe" class="btn">
+    </form>
+    <div id="mce-responses">
+			<div class="response" id="mce-error-response" style="display:none;"></div>
+			<div class="response" id="mce-success-response" style="display:none;"></div>
+		</div>
         </div>
-        <a id="newsletter-close" href="javascript:void(0)">Close</a>
+
+        <a id="newsletter-close" href="javascript:void(0)">X</a>
       </div>
 
     </header>
@@ -163,7 +164,6 @@
           <div id="cart-updated"><a href="/cart">Added to cart</a></div>
         </div> <!-- /.cart-summary -->
       </ul>
-
     </nav>
 
     <section id="body" class="clearfix">
@@ -172,23 +172,25 @@
 
     <footer class="clearfix">
       {% if settings.footer_linklist_1.title != "" and linklists[settings.footer_linklist_1].links.size > 0 %}
-	<div class="row">
       <nav>
         <ul>
+          <li id="copyright"><a href="http://www.krapydna.com">&copy; krapyDNA 2011</a> <strong>&middot;</strong></li>
           {% for link in linklists[settings.footer_linklist_1].links %}
-          <li><a href="{{ link.url }}"{% if link.url == active_url %} class="current"{% endif %}{% if template == 'article' and link.url == blog.url %} class="current"{% endif %}>{{ link.title }}</a></li>
+          <li><a href="{{ link.url }}">{{ link.title }}</a></li>
           {% endfor %}
+          <li class="social"><strong>&middot;</strong> <a href="http://www.facebook.com/pages/krapyDNA/152855384778582" id="facebook">Facebook</a></li>
+          <li class="social"><a href="http://www.twitter.com/krapydnaapparel" id="twitter">@Twitter</a></li>
         </ul>
       </nav>
-	<div id="social-buttons">
-		<a href="http://facebook.com"><img class="social-button" src="{{'facebook.png' | asset_url}}"></a>
-		<a href="http://twitter.com/krapydnaapparel"><img class="social-button" src="{{'twitter.png' | asset_url}}"></a>
-		<div class="clear"></div>
-</div>
       {% endif %}
-	<div id="copyright-info">
-		&copy; 2011 krapyDNA
-	</div>
+      <div id="social-buttons">
+        <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://krapydna.com" data-text="krapyDNA Apparel - Ordinary People, Extraordinary Impact." data-count="horizontal" data-via="krapyDNAapparel">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
+        <g:plusone size="medium"></g:plusone>
+        <span id="fb-wrapper">
+        <span id="fb-root"></span><script src="http://connect.facebook.net/en_US/all.js#appId=113713508719087&amp;xfbml=1"></script><fb:like href="http://www.krapydna.com" send="false" layout="button_count" width="15px" show_faces="false" font=""></fb:like></span>
+      </div>
+
+      </div>
     </footer>
   </div> <!-- /.wrapper -->
 

@@ -60,7 +60,7 @@ function mce_preload_check(){
 }
 function mce_init_form(){
     jQuery(document).ready( function($) {
-      var options = { errorClass: 'mce_inline_error', errorElement: 'div', onkeyup: function(){}, onfocusout:function(){}, onblur:function(){}  };
+      var options = { errorClass: 'mce_error_response', errorElement: 'div', onkeyup: function(){}, onfocusout:function(){}, onblur:function(){}  };
       var mce_validator = $("#mc-embedded-subscribe-form").validate(options);
       $("#mc-embedded-subscribe-form").unbind('submit');//remove the validator so we can get into beforeSubmit on the ajaxform, which then calls the validator
       options = { url: 'http://krapyDNA.us2.list-manage2.com/subscribe/post-json?u=df6104009860b5bdf5e62cf87&id=7d3239b744&c=?', type: 'GET', dataType: 'json', contentType: "application/json; charset=utf-8",
