@@ -66,7 +66,7 @@ div.cart-summary span.cart a {display:block; float:right; height:26px; margin-to
 header .logo a, header .logo a img {display:block; margin:0; padding:0; width: 450px;}
 footer.row {width: 100%;}
 header #top-right-box { position: absolute; width: 480px; top:3px; left: 50%;}
-a#free-shipping {font-family:{{settings.regular_font}}, "Georgia";float:right; width: 275px; -webkit-border-radius: 5px; -moz-border-radius: 5px; border-radius: 5px;  padding: 13px 10px; text-align: right; border: 1px solid #ccc; margin-top: 15px; background: url("{{ 'box-icon.png' | asset_url}}") 3px no-repeat #F4F4F4; vertical-align: center; color: green; font-size: 19px; text-shadow: 0 1px 1px #cacaca; box-shadow: 0px 0px 1px #F2F2F2;}
+a#free-shipping {font-family:{{settings.regular_font}}, "Georgia";float:right; width: 230px; -webkit-border-radius: 5px; -moz-border-radius: 5px; border-radius: 5px;  padding: 13px 10px; text-align: right; border: 1px solid #ccc; margin-top: 15px; /*background: url("{{ 'box-icon.png' | asset_url}}") 3px no-repeat*/ background: #F4F4F4; vertical-align: center; color: green; font-size: 19px; text-shadow: 0 1px 1px #cacaca; box-shadow: 0px 0px 1px #F2F2F2;}
 a#free-shipping:hover{border: 1px solid #bbb; box-shadow: 0px 0px 2px #F2F2F2;}
 a#free-shipping:active{border: 1px solid #888;  background-color: #EAEAEA; top: 1px; box-shadow: 0px 0px 2px #EDEDED;}
 
@@ -109,7 +109,7 @@ input[type=text] {border:1px solid #999; padding:3px 5px; border-radius:6px; -mo
 
 /* picture sidebarrrrrrrrr */
 #body .picture_sidebar {
-  float:right; width: 285px; height: 600px; margin-top: 20px;
+  float:right; width: 285px; margin-top: 20px;
   /*-moz-box-shadow:  0 0 8px #777;
   -webkit-box-shadow:  0 0 8px #777;
   box-shadow: 0 0 8px #777;*/
@@ -118,7 +118,7 @@ input[type=text] {border:1px solid #999; padding:3px 5px; border-radius:6px; -mo
   border-radius: 10px;
 }
 
-#sidebar-image { width: 285px;}
+#sidebar-image { width: 285px; border: 1px solid #999; border-radius: 2px;}
 
 
 #body .one {width:292px; margin-right:42px;}
@@ -427,3 +427,16 @@ nav.main {border-top:1px dotted #262626;}
 #contact-info { border: 0; margin: 20px 0;}
 #contact-info tr {border:0;}
 .contact-method{font-weight: bold;}
+
+
+/* Story, About-Us */
+#mission { width: 450px; border: 1px solid #000; background: #333; color: #fff; height: 80px; margin: 20px auto; padding: 15px; text-align: center; font-size: 20px;
+  text-shadow: 0 1px 0 #111; font-family: {{serif_font}}; line-height: 26px; border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px;}
+
+#story-andy {width: 250px;}
+#story-shirtsonbanner{width: 200px;}
+.image-right {float:right; margin: 5px 0 15px 15px;}
+.image-left {float:left; margin: 5px 15px 15px 0;}
+
+.story-image {border: 1px solid #999;}
+#signature {float:right; margin: 35px 10px 0 0; font-size: 22px; text-shadow: 0 1px 0 #cacaca;}
