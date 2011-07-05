@@ -1,3 +1,4 @@
+
 {% assign serif_font = "'Arvo'"%}
 
 
@@ -62,21 +63,21 @@ div.cart-summary {right: 0; position:absolute; text-align:right; font-size:{{ se
 header .contact-info {text-align:right; font-size:12px; float:right; /*position: absolute;top:3px; left:50%; */width:480px; font-style:; text-transform:; font-family:{{ settings.regular_font }}, serif; display:block; }
 header .contact-info span {margin-left:10px;}
 div.cart-summary span.cart a {display:block; float:right; height:26px; margin-top:6px; padding-left:36px; background:url('cart-icon.png') no-repeat 0px -1px; font-size:12px; font-style:; text-transform:; font-family:{{ settings.regular_font }}, serif;}
-header .logo a, header .logo a img {display:block; margin:0; padding:0; width: 500px;}
+header .logo a, header .logo a img {display:block; margin:0; padding:0; width: 450px;}
 footer.row {width: 100%;}
 header #top-right-box { position: absolute; width: 480px; top:3px; left: 50%;}
-a#free-shipping {font-family:{{serif_font}}, "Georgia";float:right; width: 275px; -webkit-border-radius: 5px; -moz-border-radius: 5px; border-radius: 5px;  padding: 13px 10px; text-align: right; border: 1px solid #ccc; margin-top: 15px; background: url("{{ 'box-icon.png' | asset_url}}") 3px no-repeat #F4F4F4; vertical-align: center; color: green; font-size: 19px; text-shadow: 0 1px 1px #cacaca; box-shadow: 0px 0px 1px #F2F2F2;}
+a#free-shipping {font-family:{{settings.regular_font}}, "Georgia";float:right; width: 275px; -webkit-border-radius: 5px; -moz-border-radius: 5px; border-radius: 5px;  padding: 13px 10px; text-align: right; border: 1px solid #ccc; margin-top: 15px; background: url("{{ 'box-icon.png' | asset_url}}") 3px no-repeat #F4F4F4; vertical-align: center; color: green; font-size: 19px; text-shadow: 0 1px 1px #cacaca; box-shadow: 0px 0px 1px #F2F2F2;}
 a#free-shipping:hover{border: 1px solid #bbb; box-shadow: 0px 0px 2px #F2F2F2;}
 a#free-shipping:active{border: 1px solid #888;  background-color: #EAEAEA; top: 1px; box-shadow: 0px 0px 2px #EDEDED;}
 
-.page-title {font-size: 24px; margin: 10px 0 15px 0; color: #000; text-shadow: 0 1px 0 #ccc; font-family: {{serif_font}};}
+.page-title {font-size: 24px; margin: 10px 0 15px 0 ; color: #000; text-shadow: 0 1px 0 #ccc; font-family: {{serif_font}};}
 
 #cart-updated {position:absolute; top:100%; background:url('details-bg.png') no-repeat 50% 0; padding:10px 0 5px 0; z-index:15000 !important; text-align:center; color:#fff; font-size:12px; text-transform:none; line-height:16px; display:none;}
 #cart-updated a {color:#fff; font-family:{{ settings.regular_font }}, serif; font-style:; text-transform:;}
 nav.main {margin-bottom:20px;}
 
 nav ul {position: relative;}
-nav li a {font-family:{{serif_font}}; padding:7px 25px; font-size:{{ settings.nav_font_size }}; text-transform:{{ settings.nav_font_style }}; font-weight:{{ settings.nav_weight }}; color:{{ settings.nav_link_color }}; }
+nav li a {font-family:{{serif_font}}; padding:7px 35px; font-size:{{ settings.nav_font_size }}; text-transform:{{ settings.nav_font_style }}; font-weight:{{ settings.nav_weight }}; color:{{ settings.nav_link_color }}; }
 nav li a:hover {color:{{ settings.nav_link_hover_color }};}
 nav li {margin:0;}
 nav li a.current, nav li.active a {color:{{ settings.selected_nav_link_color }}; background:{{ settings.selected_nav_link_bg_color }}; }
@@ -109,14 +110,15 @@ input[type=text] {border:1px solid #999; padding:3px 5px; border-radius:6px; -mo
 /* picture sidebarrrrrrrrr */
 #body .picture_sidebar {
   float:right; width: 285px; height: 600px; margin-top: 20px;
-  background: url("{{'sidebar2.png' | asset_url}}");
-  -moz-box-shadow:  0 0 8px #777;
+  /*-moz-box-shadow:  0 0 8px #777;
   -webkit-box-shadow:  0 0 8px #777;
-  box-shadow: 0 0 8px #777;
+  box-shadow: 0 0 8px #777;*/
   -moz-border-radius: 10px;
   -webkit-border-radius: 10px;
   border-radius: 10px;
 }
+
+#sidebar-image { width: 285px;}
 
 
 #body .one {width:292px; margin-right:42px;}
@@ -148,7 +150,7 @@ input.disabled {background-color:#fff; color:#333;}
 nav li {position:relative; z-index:12000 !important;}
 nav li.dropdown > a {padding-right:20px; margin-right:5px; background:url('nav-dropdown.png') no-repeat 93% 50%;}
 nav li.dropdown > a.current { background:{{ settings.selected_nav_link_bg_color }} url('nav-dropdown.png') no-repeat 93% 50%; color:{{ settings.selected_nav_link_color }};}
-nav li ul {z-index:10000 !important; position:absolute; text-align:center; min-width:100%; left: -20px; top:100%; display:none; opacity:0.0; background:url('details-bg.png') no-repeat 50% 0; padding-top:4px;}
+nav li ul {z-index:10000 !important; position:absolute; text-align:center; min-width:100%; left: px; top:100%; display:none; background:url('details-bg.png') no-repeat 50% 0; padding-top:4px;}
 nav li ul li, nav li ul li a {display:block; margin:0; padding:0; float:none;}
 nav li ul li {position:relative;}
 nav li ul li a {padding:10px 18px; font-style:; text-transform:; font-size:15px; width: 100px; line-height:18px; font-family:{{serif_font}}, serif; color:#fff;}
@@ -190,9 +192,8 @@ footer nav {margin-bottom: 10px; text-align: center; width: 100%;}
   margin-bottom: 35px;
 }
 #home-banner{
-  width:100%; height: 300px;
-  background: url({{'home-banner1.png' | asset_url}});
-  background-position: 0px -50px;
+  width:100%; height: 420px;
+  background: url({{'homepage1.jpg' | asset_url}});
 }
 
 #collection-banner{
@@ -307,7 +308,7 @@ footer nav {margin-bottom: 10px; text-align: center; width: 100%;}
 /* page */
 
 /* blogs and articles */
-#blog .article {padding:10px 0 35px 0;}
+#blog .article {padding:0px 0 35px 0; margin-bottom: 20px;}
 #blog .articles .article:last-child {border-bottom:none;}
 #blog .article .content p, #article .content p {margin-bottom:20px;}
 .article-body .content{margin-bottom: 20px; padding-bottom: 20px;}
@@ -319,7 +320,7 @@ footer nav {margin-bottom: 10px; text-align: center; width: 100%;}
 #article .comments .comment .gravatar {float:right; display:none;}
 #article .comment_form input[type=text], #article .comment_form textarea {display:block; margin-bottom:10px; width:100%; border:1px solid #D9D9D9; padding:3px;}
 .comment-form {width: 50%; margin-bottom: 20px; }
-.article-body {width:100%; margin: 0px 0px 15px 0; border-bottom: 1px dotted #cacaca;}
+.article-body {width:100%; margin: 0px 0px 25px 0; border-bottom: 1px dotted #cacaca;}
 .previous-next-article {width:100%; margin-bottom: 10px;}
 .previous-article {float:left; margin-bottom: 15px;}
 .next-article {float:right;margin-bottom: 15px;}
@@ -421,3 +422,8 @@ nav.main {border-top:1px dotted #262626;}
 
 /*FAQ*/
 .faq-question { font-weight: bold; color: #000; margin: 20px 0 0 0;}
+
+/*contact */
+#contact-info { border: 0; margin: 20px 0;}
+#contact-info tr {border:0;}
+.contact-method{font-weight: bold;}

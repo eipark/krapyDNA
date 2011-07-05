@@ -1,0 +1,31 @@
+$(document).ready(function(){
+
+  // hacky sidebar logic, precompute URLs on server side and select one
+  var sidebar_images = 2;
+  var sidebar_url_array = new Array();
+  sidebar_url_array[0] = '{{'sidebar1.jpg' | asset_url}}';
+  sidebar_url_array[1] = '{{'sidebar2.jpg' | asset_url}}';
+  sidebar_url_array[2] = '{{'sidebar3.jpg' | asset_url}}';
+  sidebar_url_array[3] = '{{'sidebar4.jpg' | asset_url}}';
+  sidebar_url_array[4] = '{{'sidebar5.jpg' | asset_url}}';
+  sidebar_url_array[5] = '{{'sidebar6.jpg' | asset_url}}';
+  sidebar_url_array[6] = '{{'sidebar7.jpg' | asset_url}}';
+  sidebar_url_array[7] = '{{'sidebar8.jpg' | asset_url}}';
+  sidebar_url_array[8] = '{{'sidebar9.jpg' | asset_url}}';
+  sidebar_url_array[9] = '{{'sidebar10.jpg' | asset_url}}';
+  sidebar_images = Math.floor(Math.random()*1000) % sidebar_images;
+  var sidebar_url = sidebar_url_array[sidebar_images];
+
+
+
+	$("#newsletter-link").click(function(){
+		$("#newsletter-box").show();
+	});
+
+	$("#newsletter-close").click(function(){
+		$("#newsletter-box").hide();
+	});
+
+	$("#sidebar-image").attr("src", sidebar_url);
+
+});

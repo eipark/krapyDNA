@@ -8,7 +8,7 @@
         <div class="content">
           <div class="blog-title"><a href="{{ article.url }}">{{ article.title }}</a></div>
           <div class="blog-meta">{{article.author}} | {{ article.created_at | date: "%m.%d.%y" }} | <a href="{{ article.url }}#disqus_thread" data-disqus-identifier="{{article.id}}"></a></div>
-          {{ article.content | strip_html }}
+          {{ article.content }}
 
         </div>
       </div> <!-- /.article -->
