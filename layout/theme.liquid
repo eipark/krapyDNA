@@ -17,13 +17,14 @@
   <meta property="og:title" content="krapyDNA" />
   <meta property="og:type" content="company" />
   <meta property="og:url" content="http://www.krapyDNA.com" />
-  <meta property="og:image" content="http://cdn.shopify.com/s/files/1/0070/6762/t/1/assets/logo.png?103101" />
+  <meta property="og:image" content="https://static.shopify.com/s/files/1/0070/6762/t/1/assets/krapy-black.png?104165" />
   <meta property="og:site_name" content="krapyDNA" />
   <meta property="fb:admins" content="1342020184" />
 
-  <meta name="description" content="krapyDNA is a line of apparel under the theme of Ordinary People, Extraordinary Impact.">
+  <meta name="description" content="krapyDNA is a Christian clothing brand dedicated to creating high quality clothing but more importantly its mission is to share the message that God can use ordinary people to make an extraordinary impact on the world.">
   <meta name="author" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="google-site-verification" content="SbavYuoLh01JwxFipNH3kTCuguZBz-Yfod5ytvMOa9I" />
 
   {{ 'reset.css' | asset_url | stylesheet_tag }}
   {{ 'shop.css' | asset_url | stylesheet_tag }}
@@ -52,32 +53,13 @@
   {{ 'mailchimp.js' | asset_url | script_tag }}
   {{ 'krapy.js' | asset_url | script_tag }}
 
-
-  {% if settings.typeface_method == "cufon" %}
-
-  {{ 'cufon.js' | asset_url | script_tag }}
-
-  {% if settings.cufon_font == "LeagueGothic" %}{{ 'LeagueGothic.font.js' | asset_url | script_tag }}{% endif %}
-  {% if settings.cufon_font == "Museo" %}{{ 'Museo.font.js' | asset_url | script_tag }}{% endif %}
-  {% if settings.cufon_font == "Conqueror" %}{{ 'Conqueror.font.js' | asset_url | script_tag }}{% endif %}
-  {% if settings.cufon_font == "Raleway" %}{{ 'Raleway.font.js' | asset_url | script_tag }}{% endif %}
-  {% if settings.cufon_font == "StMarie" %}{{ 'StMarie.font.js' | asset_url | script_tag }}{% endif %}
-
-  <script type="text/javascript">
-  Cufon.replace('h1,h2,h3,h4,h5,h6', {hover: true});
-  Cufon.replace('a.cufon, a .cufon, .cufon a', {hover: true});
-
-  </script>
-  {% endif %}
   <script type="text/javascript" src="https://apis.google.com/js/plusone.js"></script>
   {% if settings.typeface_method == "google_webfonts" %}
   <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family={{ settings.google_webfont_font }}">
   {% endif %}
-  <link href='http://fonts.googleapis.com/css?family=Permanent+Marker&v1' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Carter+One&v1' rel='stylesheet' type='text/css'>
   <link href='http://fonts.googleapis.com/css?family=Arvo:regular,bold&v1' rel='stylesheet' type='text/css'>
   <link href='http://fonts.googleapis.com/css?family=Bangers:regular&v1' rel='stylesheet' type='text/css'>
-
-
 
   <script type="text/javascript">
   Shopify.money_format = '{{ shop.money_format }}';
@@ -100,7 +82,7 @@
 
       <div id="top-right-box">
         <p class="contact-info">
-          <a id="newsletter-link" href="javascript:void(0)">Newsletter Sign Up</a>
+          <a class="newsletter-link" href="javascript:void(0)">Newsletter Sign Up</a>
 
           {% if shop.customer_accounts_enabled %}
           <span class="customer">
@@ -118,9 +100,12 @@
           <span class="email"><a href="mailto:{{ settings.contact_email }}">{{ settings.contact_email }}</a></span>
           {% endif %}
         </p>
-        <a href="/pages/faq#shipping" id="free-shipping">
-          Free Domestic Shipping!
-        </a>
+        <div id="news-box">
+            Shop opens July 11
+          <a href="/pages/faq#shipping" id="free-shipping">
+            Free Domestic Shipping!
+          </a>
+        </div>
       </div>
 
       <div id="newsletter-box">
@@ -130,7 +115,6 @@
           <div id="newsletter-text">Sign up to receive product updates, coupons, and any other exciting news from krapyDNA! Your email will be kept confidential and you can
             opt out at any time.</div>
           <!-- <label for="mce-EMAIL"></label> -->
-
           <input type="text" value="Email Address" name="EMAIL" class="required email" id="mce-EMAIL">
         <input type="submit" value="Sign up" name="subscribe" id="mc-embedded-subscribe" class="btn">
     </form>
@@ -179,8 +163,8 @@
           {% for link in linklists[settings.footer_linklist_1].links %}
           <li><a href="{{ link.url }}">{{ link.title }}</a></li>
           {% endfor %}
-          <li class="social"><strong>&middot;</strong> <a href="http://www.facebook.com/pages/krapyDNA/152855384778582" id="facebook">Facebook</a></li>
-          <li class="social"><a href="http://www.twitter.com/krapydnaapparel" id="twitter">@Twitter</a></li>
+          <li class="social"><strong>&middot;</strong> <a href="http://www.facebook.com/krapyDNAapparel" id="facebook">Facebook</a></li>
+          <li class="social"><a href="http://www.twitter.com/krapyDNAapparel" id="twitter">@Twitter</a></li>
         </ul>
       </nav>
       {% endif %}
@@ -188,10 +172,9 @@
         <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://krapydna.com" data-text="krapyDNA Apparel - Ordinary People, Extraordinary Impact." data-count="horizontal" data-via="krapyDNAapparel">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
         <g:plusone size="medium"></g:plusone>
         <span id="fb-wrapper">
-        <span id="fb-root"></span><script src="http://connect.facebook.net/en_US/all.js#appId=113713508719087&amp;xfbml=1"></script><fb:like href="http://www.krapydna.com" send="false" layout="button_count" width="15px" show_faces="false" font=""></fb:like></span>
+        <span id="fb-root"></span><script src="http://connect.facebook.net/en_US/all.js#appId=113713508719087&amp;xfbml=1"></script><fb:like href="http://facebook.com/krapydnaapparel" send="false" layout="button_count" width="15px" show_faces="false" font=""></fb:like></span>
       </div>
 
-      </div>
     </footer>
   </div> <!-- /.wrapper -->
 

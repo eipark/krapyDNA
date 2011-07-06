@@ -167,3 +167,29 @@
                {% endfor %}
                {% endif %}
            </div> -->
+
+
+
+
+           {% if settings.typeface_method == "cufon" %}
+
+           {{ 'cufon.js' | asset_url | script_tag }}
+
+           {% if settings.cufon_font == "LeagueGothic" %}{{ 'LeagueGothic.font.js' | asset_url | script_tag }}{% endif %}
+           {% if settings.cufon_font == "Museo" %}{{ 'Museo.font.js' | asset_url | script_tag }}{% endif %}
+           {% if settings.cufon_font == "Conqueror" %}{{ 'Conqueror.font.js' | asset_url | script_tag }}{% endif %}
+           {% if settings.cufon_font == "Raleway" %}{{ 'Raleway.font.js' | asset_url | script_tag }}{% endif %}
+           {% if settings.cufon_font == "StMarie" %}{{ 'StMarie.font.js' | asset_url | script_tag }}{% endif %}
+
+           <script type="text/javascript">
+           Cufon.replace('h1,h2,h3,h4,h5,h6', {hover: true});
+           Cufon.replace('a.cufon, a .cufon, .cufon a', {hover: true});
+
+           </script>
+           {% endif %}
+
+
+           <!--
+             <div id="home-banner" class="image-banner">
+             </div>
+           -->
