@@ -12,7 +12,7 @@
 <div class="sidebar-header">Tags</div>
 <ul>
 {% for tag in blog.all_tags %}
-<li class="{{ tag | handleize }}">+ {{ tag | link_to_tag: tag }}</li>
+<li class="{{ tag | handleize }}">+ <a href="{{ shop.url}}/blogs/{{ blog.handle }}/tagged/{{ tag | handleize }}">{{ tag }}</a></li>
 {% endfor %}
 </ul>
 
