@@ -1,0 +1,21 @@
+<div id="blog-sidebar" class="clearfix">
+
+{% if blog.articles_count > 0 %}
+<div class="sidebar-header">Recent Posts</div>
+<ul>
+{% for article in blog.articles limit:5 %}
+  <li>+ <a href="{{article.url}}">{{ article.title}}</a></li>
+{% endfor %}
+</ul>
+{% endif %}
+
+<div class="sidebar-header">Tags</div>
+<ul>
+{% for tag in blog.all_tags %}
+<li class="{{ tag | handleize }}">+ {{ tag | link_to_tag: tag }}</li>
+{% endfor %}
+</ul>
+
+
+<a href="http://krapydna.myshopify.com/blogs/blog.atom"><img src="{{ 'feed_icon.png' | asset_url}}"/></a>
+</div>

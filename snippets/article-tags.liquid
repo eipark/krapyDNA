@@ -1,0 +1,6 @@
+<ul id="article-tag-list">
+Tags:
+{% for tag in article.tags %}
+<li class="{{ tag | handleize }}">{{ tag | link_to_tag: tag }}</li>
+{% endfor %}
+</ul>

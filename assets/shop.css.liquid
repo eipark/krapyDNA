@@ -127,7 +127,8 @@ input[type=text] {border:1px solid #999; padding:3px 5px; border-radius:6px; -mo
 tr.summary {border-bottom:none;}
 .sidebar .total {font-weight:700;}
 
-.pagination span.current, .pagination a {display:block; float:left; padding:2px 6px;}
+.pagination {width:100%; text-align: right;}
+.pagination span.current, .pagination a { padding:2px 6px; }
 .pagination span.current {text-decoration:none; font-weight:700; color:#000;}
 .pagination a {color:#888; text-decoration:none; font-weight:400; border-bottom:none;}
 .pagination a:hover {color:#666;}
@@ -302,10 +303,17 @@ footer nav {margin-bottom: 10px; text-align: center; width: 100%;}
 #article .comments .comment .gravatar {float:right; display:none;}
 #article .comment_form input[type=text], #article .comment_form textarea {display:block; margin-bottom:10px; width:100%; border:1px solid #D9D9D9; padding:3px;}
 .comment-form {width: 50%; margin-bottom: 20px; }
-.article-body {width:100%; margin: 0px 0px 25px 0; border-bottom: 1px dotted #cacaca;}
+.article-body {width:100%; margin: 0px 0px 25px 0;}
 .previous-next-article {width:100%; margin-bottom: 10px;}
 .previous-article {float:left; margin-bottom: 15px;}
 .next-article {float:right;margin-bottom: 15px;}
+#disqus_thread {padding-top: 20px; border-top: 1px dotted #cacaca;}
+#article-tag-list {width: 100%; margin-top: 40px;}
+#article-tag-list a{color: #777; text-decoration: underline;}
+#article-tag-list a:hover{color: {{ settings.link_hover_color }};text-decoration: underline;}
+ul#article-tag-list {list-style: none;}
+#article-tag-list li {display: inline; margin-right: 7px;}
+
 
 /* search */
 #search .highlight {background:#fff000; color:#000; padding:2px 4px;}
@@ -366,12 +374,7 @@ nav.main {border-top:1px dotted #262626;}
 
 /* mailchimp newsletter */
 #newsletter-box{
-  display:none;
-  position:fixed;
-  margin: 200px 275px 0 275px;
-  padding: 10px;
-  width: 400px;
-  height: 200px;
+  display:none; position:fixed; margin: 200px 275px 0 275px; padding: 10px; width: 400px; height: 200px;
   border-radius: 5px;
   border: 10px solid #999;
   z-index: 21000;
@@ -404,19 +407,28 @@ nav.main {border-top:1px dotted #262626;}
 /* Story, About-Us */
 #mission { width: 450px; border: 1px solid #000; background: #333; color: #fff; height: 80px; margin: 20px auto; padding: 15px; text-align: center; font-size: 18px;
   text-shadow: 0 1px 0 #111; font-family: {{serif_font}}; line-height: 26px; border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px;}
-p.caption-under{font-size: 12px; margin-top: 5px; margin-bottom: 25px; text-align: center;}
+p.caption-under{font-size: 12px; margin-top:0; margin-bottom: 25px; text-align: center;}
 
 #story-andy {width: 250px;}
 #story-shirtsonbanner{width: 275px;}
 .image-right {float:right; margin: 5px 0 15px 15px;}
 .image-left {float:left; margin: 5px 15px 15px 0;}
 .image-center {display:block; text-align: center; max-width: 750px; margin: 0 auto;}
-
-.story-image, .blog-image {border: 1px solid #999;}
 #signature {float:right; margin: 35px 10px 0 0; font-size: 22px; text-shadow: 0 1px 0 #cacaca; }
-
 #story p {margin-bottom: 20px; !important}
 .divider{width:100%; margin: 15px 0; height: 1px; border-top: 1px dotted #ccc;}
+.story-image {border: 1px solid #555;}
+
+/* blog images */
+.article-body img {border: 1px solid #555;}
+
+/* Blog sidebar */
+#blog-sidebar{width: 230px; float:right; border-left: 1px dotted #ccc; padding: 5px 0 100px 10px; margin: 35px 0 0 10px;}
+.articles, .article-body{width:678px; float:left; overflow: hidden;}
+.sidebar-header{margin:10px 0; font-size: 18px; text-shadow: 0 1px 0 #cacaca;}
+#blog-sidebar ul{list-style:none; padding-left:; margin-bottom: 30px;}
+#blog-sidebar ul li {line-height: 16px;}
+#blog-sidebar a:hover{text-decoration:underline;}
 
 /*store closed*/
 p#store-closed { width: 325px; margin: 30px auto; border: 1px solid #e17b7b; background: #edcdcd; text-align: center; padding: 10px; border-radius: 5px;}

@@ -1,27 +1,28 @@
 <div id="article" class="clearfix">
-  <div class="previous-next-article">
-    {% if blog.previous_article %}
-    <span class="previous-article">
-      <a href="{{ blog.previous_article }}" class="previous_product">&#60;&#60;Previous Post</a>
-    </span>
-    {% endif %}
-    {% if blog.next_article %}
-    <span class="next-article">
-      <a href="{{ blog.next_article }}" class="next_product">Next Post&#62;&#62;</a>
-    </span>
-    {% endif %}
-  </div>
-
   <div class="article-body clearfix clear">
+
+    <div class="previous-next-article clearfix">
+      {% if blog.previous_article %}
+      <span class="previous-article">
+        <a href="{{ blog.previous_article }}" class="previous_product">&#60;&#60;Previous Post</a>
+      </span>
+      {% endif %}
+      {% if blog.next_article %}
+      <span class="next-article">
+        <a href="{{ blog.next_article }}" class="next_product">Next Post&#62;&#62;</a>
+      </span>
+      {% endif %}
+    </div>
+
     <div class="blog-title">{{ article.title }}</div>
     <div class="blog-meta">{{article.author}} | {{ article.created_at | date: "%m.%d.%y" }} | <a href="{{ article.url }}#disqus_thread" data-disqus-identifier="{{article.id}}"></a></div>
     <div class="content">
       {{ article.content }}
+      {% include 'article-tags' %}
     </div>
   </div> <!-- /.article-body -->
-
-
-
+  {% include 'blog-sidebar' %}
+</div>
 
   {% if blog.comments_enabled? %}
   <div id="disqus_thread"></div>
@@ -30,7 +31,7 @@
 
       // The following are highly recommended additional parameters. Remove the slashes in front to use.
       var disqus_identifier = '{{article.id}}';
-      // var disqus_url = 'http://example.com/permalink-to-page.html';
+      var disqus_url = 'http://www.krapydna.com{{article.url}}';
 
       /* * * DON'T EDIT BELOW THIS LINE * * */
       (function() {
@@ -41,9 +42,4 @@
   </script>
   <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
   <a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
-
-
-
   {% endif %}
-</div> <!-- /#article -->
-<!--{% include 'featured-products' %}-->

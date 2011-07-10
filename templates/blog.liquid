@@ -1,22 +1,20 @@
+{% assign blog_pagination_max = 4 %}
 <div id="blog" class="clearfix">
-  {% paginate blog.articles by settings.pagination_limit %}
   <div class="articles clearfix">
-    <div class="">
-      <div class="page-title">{{ blog.title }}</div>
-      {% for article in blog.articles %}
-      <div class="article clearfix">
-        <div class="content">
-          <div class="blog-title"><a href="{{ article.url }}">{{ article.title }}</a></div>
-          <div class="blog-meta">{{article.author}} | {{ article.created_at | date: "%m.%d.%y" }} | <a href="{{ article.url }}#disqus_thread" data-disqus-identifier="{{article.id}}"></a></div>
-          {{ article.content }}
-
-        </div>
-      </div> <!-- /.article -->
-      {% endfor %}
-    </div> <!-- /.main -->
-  </div> <!-- /.articles -->
-
-  {% include 'pagination' %}
-  {% endpaginate %}
-</div> <!-- /#blog -->
-
+    <div class="page-title">{{ blog.title }}</div>
+    {% paginate blog.articles by blog_pagination_max %}
+    {% for article in blog.articles %}
+    <div class="article clearfix">
+      <div class="content">
+        <div class="blog-title"><a href="{{ article.url }}">{{ article.title }}</a></div>
+        <div class="blog-meta">{{article.author}} | {{ article.created_at | date: "%m.%d.%y" }} | <a href="{{ article.url }}#disqus_thread" data-disqus-identifier="{{article.id}}"></a></div>
+        {{ article.content }}
+        {% include 'article-tags' %}
+      </div>
+    </div>
+    {% endfor %}
+    {% include 'pagination' %}
+    {% endpaginate %}
+  </div>
+  {% include 'blog-sidebar' %}
+</div>
