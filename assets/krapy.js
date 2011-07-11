@@ -1,7 +1,7 @@
 $(document).ready(function(){
 
   // hacky sidebar logic, precompute URLs on server side and select one
-  var sidebar_images = 3;
+  var sidebar_images = 2;
   var sidebar_url_array = new Array();
   sidebar_url_array[0] = 'http://cdn.shopify.com/s/files/1/0070/6762/t/1/assets/sidebar1.jpg?104557';
   sidebar_url_array[1] = 'http://cdn.shopify.com/s/files/1/0070/6762/t/1/assets/sidebar2.jpg?104557';
