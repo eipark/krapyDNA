@@ -63,20 +63,19 @@
         {% endif %}
 
         <div class="purchase clearfix">
-          <!--
           {% if product.variants.first.available == true && product.variants.size == 1 %}
           <span><input type="submit" name="add" id="add-to-cart" value="Add to Cart" class="cart cufon" /></span>
           {% else %}
           <span><input type="submit" name="add" id="add-to-cart" value="Sold Out" disabled="disabled" class="cart cufon disabled" /></span>
           {% endif %}
-          -->
-
         </div>
+        <!--
         <p id="store-closed">
         Shop opens for sale on <strong>July 11</strong>. <br />
         Sign up for our <a class="newsletter-link" href="javascript:void(0)">newsletter</a> to receive updates. <br />
         Thank you!
         </p>
+        -->
       </form>
 
       {% if settings.product_description_position == "bottom" %}
