@@ -32,7 +32,8 @@
 
       {% if settings.product_description_position == "top" %}
       <div class="description">
-        {{ product.description }}
+        {{ product.description }}<br /><br />
+        <p><a href="/pages/faq#aa-shirts">Shirt and Sizing Info</a></p>
       </div><!--
       <div class="details"><span class="type">type: {{ product.type | link_to_type }}</span> <span class="vendor">vendor: {{ product.vendor | link_to_vendor }}</span></div>-->
       {% endif %}
@@ -80,7 +81,8 @@
 
       {% if settings.product_description_position == "bottom" %}
       <div class="description">
-        {{ product.description }}
+        {{ product.description }}<br /><br />
+        <a href="/pages/faq#aa-shirts">Shirt and Sizing Info</a>
       </div>
       <!--
       <div class="details"><span class="type">type: {{ product.type | link_to_type }}</span> <span class="vendor">by: {{ product.vendor | link_to_vendor }}</span></div>-->
