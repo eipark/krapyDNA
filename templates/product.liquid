@@ -139,7 +139,7 @@ var selectCallback = function(variant, selector) {
 
   } else {
     // variant doesn't exist
-    jQuery('#add-to-cart').addClass('disabled').attr('disabled', 'disabled');      // set add-to-cart button to unavailable class and disable button
+    jQuery('#add-to-cart').addClass('disabled').attr('disabled', 'disabled').attr('value', 'Sold Out');      // set add-to-cart button to unavailable class and disable button
     var message = variant ? "Sold Out" : "Unavailable";
     jQuery('#product .variants .price').text(message); // update price-field message
   }
