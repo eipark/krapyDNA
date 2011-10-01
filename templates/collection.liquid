@@ -22,7 +22,8 @@
   {% else %}
   {% paginate collection.products by settings.pagination_limit %}
 
-  <div id="collection-banner" class="image-banner">
+  <div class="image-banner">
+    {{ collection.handle | append: '.jpg' | asset_url | img_tag }}
     <span id="collection-title">{{collection.title}}</span>
   </div>
 
@@ -35,4 +36,4 @@
   {% include 'pagination' %}
   {% endpaginate %}
   {% endif %}
-</div> <!-- /#colle 1ction -->
+</div> <!-- /#collection -->

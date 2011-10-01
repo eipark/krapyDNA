@@ -1,6 +1,10 @@
 <div id="product-loop-{{ product.handle }}" class="product{% cycle 'featured': ' one', ' two', ' last' %}">
   <div class="image">
     <a href="/collections/{{ product-loop }}{{ product.url }}"><img src="{{ product.featured_image | product_img_url: 'large' }}" alt="{{ product.title | escape  }}" /></a>
+    {% if product.available == false %}
+      <div class="sold-out-corner">
+      </div>
+    {% endif %}
   </div>
   <div class="details-under clearfix">
       <a href="/collections/{{ product-loop}}{{product.url}}">
