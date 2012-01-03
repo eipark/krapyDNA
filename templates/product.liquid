@@ -24,7 +24,7 @@
       <div class="product-title">{{ product.title }}</div>
       <div class="product-page-price">
       {% if product.price_min < product.compare_at_price_min %}
-      {{ product.price_min | money }} <span>was {{ product.compare_at_price_min | money }}</span>
+      {{ product.price_min | money }} <span class="original_price">{{ product.compare_at_price_min | money }}</span>
       {% else %}
       {{ product.price_min | money }}
       {% endif %}

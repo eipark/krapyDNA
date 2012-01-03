@@ -9,7 +9,13 @@
   <div class="details-under clearfix">
       <a href="/collections/{{ product-loop}}{{product.url}}">
           <div class="title">{{product.title}}</div>
-          <div class="product-price">{{product.price | money}}</div>
+          <div class="product-price">
+            {% if product.price_min < product.compare_at_price_min %}
+            {{ product.price_min | money }} <span class="original_price">{{ product.compare_at_price_min | money }}</span>
+            {% else %}
+            {{ product.price_min | money }}
+            {% endif %}
+          </div>
         </a>
         </div>
 </div>
