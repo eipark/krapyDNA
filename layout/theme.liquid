@@ -11,24 +11,22 @@
   <link rel="shortcut icon" href="{{ 'favicon_maroon.png' | asset_url }}" />
   {{ content_for_header }}
 
-  <meta property="og:type" content="company" />
-  
-  <meta property="og:image" content="https://static.shopify.com/s/files/1/0070/6762/t/1/assets/krapy-black.png?104165" />
-	{% if template == 'product' %}
-	<meta property="og:image" content="{{ product.featured_image | product_img_url: 'compact' }}" />
-	{% endif %}
   <meta property="og:site_name" content="krapyDNA" />
   <meta property="fb:admins" content="1342020184" />
-  <meta name="description" content="krapyDNA is a Christian clothing brand dedicated to sharing the message that God can use ordinary people to make an extraordinary impact on the world.">
+    <meta name="description" content="krapyDNA is a Christian clothing brand dedicated to sharing the message that God can use ordinary people to make an extraordinary impact on the world.">
+  {% if template contains 'product' %}
+  <meta property="og:image" content="{{ product.featured_image | product_img_url: 'compact' }}" />
+  {% elsif template contains 'article' %}
+    
+    {% if article.content contains '<img' %}
+      {% assign src = article.content | split: 'src="' %}
+      {% assign src = src[1] | split: '"' | first | replace: '//cdn', 'http://cdn' | replace: 'http:http://', 'http://' %}
+      {% if src %}<meta property="og:image" content="{{ src }}" />{% endif %}
+   {% endif %}
+  {% else %}
+  <meta property="og:image" content="{{ 'logo.png' | asset_url }}" />
+  {% endif %}
 
-	{% if template == 'article' %}
-  <meta name="author" content="{{article.author}}">
-  <meta property="og:title" content="krapyDNA Blog: {{article.title}}" />
-	<meta property="og:url" content="{{shop.url}}{{article.url}}" />
-	{% else %}
-  <meta property="og:title" content="krapyDNA" />
-	<meta property="og:url" content="http://www.krapyDNA.com" />
-	{% endif %}
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="google-site-verification" content="SbavYuoLh01JwxFipNH3kTCuguZBz-Yfod5ytvMOa9I" />
 
@@ -176,12 +174,7 @@
         </ul>
       </nav>
       {% endif %}
-      <div id="social-buttons">
-        <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://www.krapydna.com" data-text="krapyDNA Apparel - Ordinary People, Extraordinary Impact." data-count="horizontal" data-via="krapyDNAapparel">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
-        <g:plusone size="medium"></g:plusone>
-        <span id="fb-wrapper">
-        <span id="fb-root"></span><script src="http://connect.facebook.net/en_US/all.js#appId=113713508719087&amp;xfbml=1"></script><fb:like href="http://facebook.com/krapydnaapparel" send="false" layout="button_count" width="15px" show_faces="false" font=""></fb:like></span>
-      </div>
+
 
     </footer>
   </div> <!-- /.wrapper -->
