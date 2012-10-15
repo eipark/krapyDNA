@@ -87,7 +87,7 @@
         {% endif %}
       </div> <!-- /.logo -->
 
-      <div id="top-right-box">
+      <!-- <div id="top-right-box">
         <p class="contact-info">
           <a class="newsletter-link" href="javascript:void(0)">Newsletter Sign Up</a>
 
@@ -107,19 +107,19 @@
           <span class="email"><a href="mailto:{{ settings.contact_email }}">{{ settings.contact_email }}</a></span>
           {% endif %}
         </p>
-        <!-- <div id="top-right-box-under">
+        <div id="top-right-box-under">
           <a class="social-media" href="http://facebook.com/krapydnaapparel"><img src="{{ 'facebook.png' | asset_url}}"></a>
           <a class="social-media" href="http://twitter.com/krapydnaapparel"><img src="{{ 'twitter.png' | asset_url}}"></a>
           <a class="social-media" href="http://youtube.com/krapydnaapparel"><img src="{{ 'youtube.png' | asset_url}}"></a>
           <a href="/pages/faq#shipping" id="free-shipping">
             Updated Shipping Info
           </a>
-        </div> -->
-      </div>
+        </div>
+      </div> -->
       <div id="newsletter-box">
         <div id="mc_embed_signup" class="clearfix">
         <form action="http://krapyDNA.us2.list-manage.com/subscribe/post?u=df6104009860b5bdf5e62cf87&amp;id=7d3239b744" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank">
-      	  <div id="newsletter-head">krapyDNA Newsletter</div>
+          <div id="newsletter-head">krapyDNA Newsletter</div>
           <div id="newsletter-text">Sign up to receive product updates, coupons, and any other exciting news from krapyDNA! Your email will be kept confidential and you can
             opt out at any time.</div>
           <!-- <label for="mce-EMAIL"></label> -->
@@ -131,7 +131,7 @@
 			<div class="response" id="mce-success-response" style="display:none;"></div>
 		</div>
         </div>
-        <a id="newsletter-close" href="javascript:void(0)">X</a>
+        <a id="newsletter-close" href="javascript:void(0)">&#10006;</a>
       </div>
     </header>
     <nav class="main">
@@ -150,7 +150,23 @@
         {% endif %}
         {% endfor %}
         <div class="cart-summary clearfix">
-          <span class="cart"><a href="/cart"><span class="cart-total-items"><span class="count">{{ cart.item_count }}</span> {{ cart.item_count | pluralize: 'Item', 'Items' }} (<span class="total_price">{{ cart.total_price | money }}</span>)</span></a></span>
+          <span class="cart"><a id="cart-link" href="/cart"><span class="cart-total-items"><span class="count">{{ cart.item_count }}</span> {{ cart.item_count | pluralize: 'Item', 'Items' }} 
+          <!--  (<span class="total_price">{{ cart.total_price | money }}</span>)-->
+            
+            </span></a>
+          {% if shop.customer_accounts_enabled %}
+           <span class="customer">
+             |
+             {% if customer %}
+             <a href="/account">{{ customer.first_name }}</a> | {{ 'Logout' | customer_logout_link }}
+             {% else %}
+             {{ 'Login' | customer_login_link }}
+             {% endif %}
+           </span>
+           {% endif %}
+          
+          </span>
+
           <div id="cart-updated"><a href="/cart">Added to cart</a></div>
         </div> <!-- /.cart-summary -->
       </ul>
@@ -164,10 +180,12 @@
       {% if settings.footer_linklist_1.title != "" and linklists[settings.footer_linklist_1].links.size > 0 %}
       <nav>
         <ul>
-          <li id="copyright"><a href="http://www.krapydna.com">&copy; krapyDNA 2011</a> <strong>&middot;</strong></li>
+          <li id="copyright"><a href="http://www.krapydna.com">&copy; krapyDNA 2012</a> <strong>&middot;</strong></li>
           {% for link in linklists[settings.footer_linklist_1].links %}
           <li><a href="{{ link.url }}">{{ link.title }}</a></li>
           {% endfor %}
+          <li><a class="newsletter-link" href="javascript:void(0)">Newsletter</a></li>
+          
           <li class="social"><strong>&middot;</strong> <a href="http://www.facebook.com/krapyDNAapparel" id="facebook">FB</a></li>
           <li class="social"><a href="http://www.twitter.com/krapyDNAapparel" id="twitter">@Twitter</a></li>
           <li class="social"><a href="http://www.youtube.com/krapyDNAapparel" id="youtube">YT</a></li>
