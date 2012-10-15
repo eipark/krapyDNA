@@ -8,6 +8,11 @@
     </ul>
   </div>
   
+  <div id="content-table" class="clearfix">
+    {% for product in collections['all-products'].products %}
+      {% include 'product-loop' with collection.handle %}
+    {% endfor %}
+  </div>
 <!--
   <div id="thirds-container" class="clearfix">
     <div id="home-blog-latest" class="home-third">
