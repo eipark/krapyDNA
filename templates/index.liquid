@@ -1,15 +1,12 @@
 <div id="index" class="clearfix">
-  <!-- <div class="slider-container">
+  <div class="slider-container">
     <ul id="slider">
       <li class="slide"><img src="{{ 'slideshow_1.jpg' | asset_url }}" data-url="{{ settings.image_1_link }}" class="slide-img" /></li>
-      <li class="slide"><img src="{{ 'slideshow_2.jpg' | asset_url }}" data-url="{{ settings.image_2_link }}" class="slide-img" /></li>
-      <li class="slide"><img src="{{ 'slideshow_3.jpg' | asset_url }}" data-url="{{ settings.image_3_link }}" class="slide-img" /></li>
-      <li class="slide"><img src="{{ 'slideshow_4.jpg' | asset_url }}" data-url="{{ settings.image_4_link }}" class="slide-img" /></li>
     </ul>
-  </div> -->
-  <a href="http://www.kickstarter.com/projects/krapydna/krapydnas-3rd-collection-faithfulness?ref=live">
+  </div>
+  <!-- <a href="http://www.kickstarter.com/projects/krapydna/krapydnas-3rd-collection-faithfulness?ref=live">
 <img src="{{ 'slideshow_1.jpg' | asset_url }}" data-url="{{ settings.image_1_link }}" class="slide-img" id="home-page-banner" />
-</a>
+</a> -->
   <div id="content-table" class="clearfix">
     {% for product in collections['all-products'].products %}
       {% include 'product-loop' with 'all-products' %}
